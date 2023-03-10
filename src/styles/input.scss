@@ -1,0 +1,72 @@
+// Import variables
+@import "./variables.scss";
+
+.input__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 15px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+    // Label styles
+    font-family: "Product Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    text-transform: uppercase;
+
+    color: #000000;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+    // Base styles for all input types
+    input {
+        // Font styles
+        font-family: "Product Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+
+        // Dimensions and spacing
+        height: 46px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 5px;
+        padding-left: 10px;
+        box-sizing: border-box;
+
+        // Placeholder styles
+        &::placeholder {
+            color: $grey-color;
+        }
+
+        // Focus styles
+        &:focus {
+            color: $primary-color;
+            outline-color: $primary-color;
+            outline-style: solid;
+        }
+
+        // Input type specific styles
+        &[type="text"],
+        &[type="password"],
+        &[type="email"],
+        &[type="number"],
+        &[type="tel"],
+        &[type="date"] {
+            padding: 10px;
+        }
+    }
+}

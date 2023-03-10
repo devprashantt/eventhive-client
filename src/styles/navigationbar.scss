@@ -1,0 +1,47 @@
+@import "./variables";
+
+.navigation__bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 120px;
+
+    .left {
+        h1 {
+            font-family: "Product Sans";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 49px;
+
+            display: flex;
+            align-items: center;
+
+            color: $black-color;
+
+            span {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+
+        p {
+            font-family: "Product Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
