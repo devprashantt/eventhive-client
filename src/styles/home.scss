@@ -1,13 +1,85 @@
 .home {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .home_img {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .home__container {
+        .home__img {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 2%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: fill;
+            }
+
+            h1 {
+                position: absolute;
+                padding: 4% 0;
+                font-family: "Product Sans";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 64px;
+                line-height: 78px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                text-transform: uppercase;
+
+                color: $white-color;
+            }
+
+            .home__img-controls {
+                position: absolute;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 20% 4%;
+
+                .home__img-control {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+
+                    width: 50px;
+                    height: 50px;
+
+                    background: rgba(242, 242, 242, 0.2);
+                    border-radius: 50px;
+                    cursor: pointer;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        .home__container {
+            .home__img {
+                display: none;
+
+                h1 {
+                    font-size: 32px;
+                    line-height: 39px;
+                }
+            }
+        }
     }
 }

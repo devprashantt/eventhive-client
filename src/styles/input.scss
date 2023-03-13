@@ -1,13 +1,10 @@
-// Import variables
-@import "./variables.scss";
-
 .input__box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 0px;
-    gap: 15px;
+    gap: 10px;
 
     flex: none;
     order: 0;
@@ -23,7 +20,7 @@
     display: flex;
     text-transform: uppercase;
 
-    color: #000000;
+    color: $black-color;
 
     flex: none;
     order: 0;
@@ -46,6 +43,7 @@
         border-radius: 5px;
         padding-left: 10px;
         box-sizing: border-box;
+        border: none;
 
         // Placeholder styles
         &::placeholder {

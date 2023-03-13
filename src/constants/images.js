@@ -1,4 +1,5 @@
 import logo from '../assets/logo.svg';
+import dummy from '../assets/dummy.svg';
 
 import image1 from '../assets/events/image1.png';
 import image2 from '../assets/events/image2.png';
@@ -10,7 +11,9 @@ import more_horizontal from '../assets/icons/Fether icons/more-horizontal.svg';
 import search from '../assets/icons/Fether icons/search.svg';
 
 import caretleft from '../assets/icons/Phosphor icons/CaretLeft.svg';
+import careright from "../assets/icons/Phosphor icons/CaretRight.svg"
 import plus from '../assets/icons/Phosphor icons/Plus.svg';
+import reset from '../assets/icons/Phosphor icons/Reset.svg'
 
 import signup_image from '../assets/img/signup-image.png';
 import signin_image from '../assets/img/signin-image.png';
@@ -31,6 +34,7 @@ export default {
     more_horizontal,
     search,
     caretleft,
+    careright,
     plus,
     signup_image,
     signin_image,
@@ -40,4 +44,6 @@ export default {
     whatsapp,
     google,
     home_image,
+    dummy,
+    reset
 };

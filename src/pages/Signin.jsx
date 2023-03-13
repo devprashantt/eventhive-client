@@ -5,7 +5,6 @@ import axios from "axios";
 
 import { Input } from "./../components";
 import { images } from "./../constants";
-import "./../styles/signin.scss";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -16,13 +15,17 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/signin", {
+      const res = await axios.post("http://localhost:3000/auth/signin", {
         email,
         password,
       });
+
       const token = res.data.token;
-      console.log(token);
+      const user = res.data.existingUser;
+
       localStorage.setItem("token", token); // store token in local storage
+      localStorage.setItem("user", JSON.stringify(user)); // store user in local storage
+
       navigate("/"); // redirect to home page
     } catch (err) {
       console.error(err);
@@ -57,10 +60,12 @@ const Signin = () => {
             <button type="submit">Signin</button>
           </form>
           <p>Or</p>
-          <button className="google__button">
-            <img src={images.google} alt="google" />
-            <p>Signin with Google</p>
-          </button>
+          <Link to="/">
+            <button className="google__button">
+              <img src={images.google} alt="google" />
+              <p>Signin with Google</p>
+            </button>
+          </Link>
         </div>
       </div>
 

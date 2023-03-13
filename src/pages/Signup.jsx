@@ -4,29 +4,23 @@ import axios from "axios";
 
 import { Input } from "./../components";
 import { images } from "./../constants";
-import "./../styles/signup.scss";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [isOrganizer, setIsOrganizer] = useState(false);
-  const [college, setCollege] = useState(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/signup", {
+      const res = await axios.post("http://localhost:3000/auth/signup", {
         name,
         email,
         password,
-        isOrganizer,
-        college,
       });
       const token = res.data.token;
-      console.log(token);
       localStorage.setItem("token", token); // store token in local storage
       navigate("/"); // redirect to home page
     } catch (err) {
@@ -80,10 +74,12 @@ function Signup() {
             <button type="submit">Signup</button>
           </form>
           <p>Or</p>
-          <button className="google__button">
-            <img src={images.google} alt="google" />
-            <p>Signup with Google</p>
-          </button>
+          <Link to="/">
+            <button className="google__button">
+              <img src={images.google} alt="google" />
+              <p>Signup with Google</p>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

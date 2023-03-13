@@ -1,5 +1,7 @@
 import Input from './Input';
 import NavigationBar from './NavigationBar';
-import Button from './Button';
+import EventCard from './EventCard';
+import Dropdown from './Dropdown';
+import Spinner from './Spinner';
 
-export { Input, NavigationBar, Button };
+export { Input, NavigationBar, EventCard, Dropdown, Spinner };

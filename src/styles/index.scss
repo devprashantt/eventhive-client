@@ -1,4 +1,23 @@
-@import "./variables.scss";
+@import "./Variables.scss";
+@import "./App.scss";
+
+@import "./Home.scss";
+@import "./Signin.scss";
+@import "./Signup.scss";
+
+@import "./Input.scss";
+@import "./NavigationBar.scss";
+@import "./Footer.scss";
+
+@import "./Dropdown.scss";
+
+@import "./EventCard.scss";
+@import "CollegeCard.scss";
+
+@import "./EventContainer.scss";
+@import "./DropdownContainer.scss";
+
+@import "./Spinner.scss";
 
 * {
     box-sizing: border-box;
