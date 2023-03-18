@@ -1,3 +1,4 @@
-import FormatDate from './FormatDate';
+import formatDate from './FormatDate';
+import fetchData from './FetchData';
 
-export { FormatDate };
+export { formatDate, fetchData };

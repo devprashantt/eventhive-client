@@ -1,0 +1,101 @@
+.ticket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    gap: 10px;
+    background-color: $white-color;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    &__heading {
+        font-family: "Product Sans";
+        font-style: normal;
+        padding: 0;
+        margin: 0;
+        color: #000000;
+    }
+    &__time {
+        font-family: "Product Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+        color: #7e7e7e;
+    }
+    &__calendar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        img {
+            width: 24px;
+            height: 24px;
+
+            svg {
+                color: $primary-color;
+            }
+        }
+        p {
+            font-family: "Product Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            color: $primary-color;
+        }
+    }
+    &__book {
+        button {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 40px;
+            gap: 10px;
+
+            width: 325px;
+            height: 49px;
+            background: #7848f4;
+            border-radius: 5px;
+            color: $white-color;
+        }
+    }
+    &__promote {
+        button {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 40px;
+            gap: 10px;
+
+            width: 325px;
+            height: 49px;
+
+            background: #c5c5c5;
+            border-radius: 5px;
+
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+            color: $white-color;
+        }
+    }
+    &__refund {
+        font-family: "Product Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #7e7e7e;
+    }
+}

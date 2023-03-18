@@ -1,0 +1,45 @@
+button {
+    outline: none;
+    border: none;
+    cursor: pointer !important;
+}
+
+input {
+    // Font styles
+    font-family: "Product Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    // Dimensions and spacing
+    height: 46px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border: none;
+
+    // Placeholder styles
+    &::placeholder {
+        color: $grey-color;
+    }
+
+    // Focus styles
+    &:focus {
+        color: $primary-color;
+        outline-color: $primary-color;
+        outline-style: solid;
+    }
+
+    // Input type specific styles
+    &[type="text"],
+    &[type="password"],
+    &[type="email"],
+    &[type="number"],
+    &[type="tel"],
+    &[type="date"] {
+        padding: 10px;
+    }
+}

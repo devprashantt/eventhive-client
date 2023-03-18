@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { EventCard, Spinner } from "./../components";
-import { FormatDate } from "./../utils";
+import { formatDate } from "./../utils";
 import { images } from "./../constants";
 import axios from "axios";
 
-const EventContainer = ({ title }) => {
+const EventContainer = () => {
   const [events, setEvents] = useState([]);
   const [originalEvents, setOriginalEvents] = useState([]);
 
@@ -48,7 +48,7 @@ const EventContainer = ({ title }) => {
     <div className="event__container">
       <div className="event__header">
         <h2>
-          {title} <span>Events</span>
+          Upcoming <span>Events</span>
         </h2>
         <div className="input">
           <input
@@ -78,7 +78,7 @@ const EventContainer = ({ title }) => {
                   <EventCard
                     key={event._id}
                     name={event.name}
-                    date={FormatDate(event.date)}
+                    date={formatDate(event.date)}
                     time={event.time}
                     location={event.location}
                     status={event.status}

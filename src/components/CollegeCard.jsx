@@ -1,21 +1,15 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap";
 
-const CollegeCard = () => {
+const CollegeCard = ({ name, location, image }) => {
   return (
-    <div>
-      <div>
-        <h1>Colleges</h1>
+    <div className="college__card">
+      <div className="college__card__image">
+        <img src={image} alt="college__card" />
       </div>
-      <div></div>
+      <div className="college__card__content">
+        <h3 className="college__card__content__name">{name}</h3>
+        <p className="college__card__content__location">{location}</p>
+      </div>
     </div>
   );
 };

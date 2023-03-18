@@ -1,9 +1,8 @@
 import logo from '../assets/logo.svg';
 import dummy from '../assets/dummy.svg';
 
-import image1 from '../assets/events/image1.png';
-import image2 from '../assets/events/image2.png';
-import image3 from '../assets/events/image3.png';
+import image1 from '../assets/events/image1.svg';
+import image2 from '../assets/events/image2.svg';
 
 import star from '../assets/icons/star.svg';
 
@@ -13,7 +12,9 @@ import search from '../assets/icons/Fether icons/search.svg';
 import caretleft from '../assets/icons/Phosphor icons/CaretLeft.svg';
 import careright from "../assets/icons/Phosphor icons/CaretRight.svg"
 import plus from '../assets/icons/Phosphor icons/Plus.svg';
-import reset from '../assets/icons/Phosphor icons/Reset.svg'
+import plusprimary from '../assets/icons/Phosphor icons/PlusPrimary.svg';
+import reset from '../assets/icons/Phosphor icons/Reset.svg';
+import MapPin from '../assets/icons/Phosphor icons/MapPin.svg';
 
 import signup_image from '../assets/img/signup-image.png';
 import signin_image from '../assets/img/signin-image.png';
@@ -25,17 +26,21 @@ import linkedin from '../assets/social/LinkedIn.svg';
 import whatsapp from '../assets/social/WhatsApp.svg';
 import google from '../assets/social/Google.svg';
 
+import FacebookLogo from '../assets/icons/Phosphor icons/FacebookLogo.png';
+import LinkedinLogo from '../assets/icons/Phosphor icons/LinkedinLogo.png';
+import InstagramLogo from '../assets/icons/Phosphor icons/InstagramLogo.png';
+
 export default {
     logo,
     image1,
     image2,
-    image3,
     star,
     more_horizontal,
     search,
     caretleft,
     careright,
     plus,
+    plusprimary,
     signup_image,
     signin_image,
     facebook,
@@ -45,5 +50,9 @@ export default {
     google,
     home_image,
     dummy,
-    reset
+    reset,
+    FacebookLogo,
+    LinkedinLogo,
+    InstagramLogo,
+    MapPin
 };

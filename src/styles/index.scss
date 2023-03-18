@@ -1,23 +1,30 @@
 @import "./Variables.scss";
 @import "./App.scss";
 
-@import "./Home.scss";
-@import "./Signin.scss";
-@import "./Signup.scss";
+@import "./home//Home.scss";
 
-@import "./Input.scss";
-@import "./NavigationBar.scss";
-@import "./Footer.scss";
+@import "./auth/Signin.scss";
+@import "./auth/Signup.scss";
 
-@import "./Dropdown.scss";
+@import "./colleges/Colleges.scss";
+@import "./colleges/College.scss";
 
-@import "./EventCard.scss";
-@import "CollegeCard.scss";
+@import "./events/Events.scss";
+@import "./events/Event.scss";
 
-@import "./EventContainer.scss";
-@import "./DropdownContainer.scss";
+@import "./components/Input.scss";
+@import "./components/Spinner.scss";
+@import "./components/NavigationBar.scss";
+@import "./components/Footer.scss";
+@import "./components/Header.scss";
+@import "./components/Dropdown.scss";
+@import "./components/CollegeCard.scss";
+@import "./components/EventCard.scss";
+@import "./components/Register.scss";
 
-@import "./Spinner.scss";
+@import "./container/EventContainer.scss";
+@import "./container/CollegeContainer.scss";
+@import "./container/DropdownContainer.scss";
 
 * {
     box-sizing: border-box;

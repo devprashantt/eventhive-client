@@ -38,11 +38,11 @@
 
 @media screen and (max-width: 768px) {
     .dropdown__container {
-        height: auto;
-        padding: 20px;
-        margin-top: -100px;
         flex-direction: column;
-        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0;
 
         button {
             width: 100%;
