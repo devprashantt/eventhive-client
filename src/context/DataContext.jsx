@@ -1,11 +1,12 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export const DataContext = createContext();
 
 export const dataInitialState = {
-    colleges: [],
-    events: [],
-    organizers: [],
-    participants: [],
-    categories: []
+  colleges: [],
+  events: [],
+  organizers: [],
+  participants: [],
+  categories: [],
+  subscribers: [],
 };

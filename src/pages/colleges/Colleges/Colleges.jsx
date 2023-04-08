@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
-import { CollegeCard } from "../../components";
-import { images } from "../../constants";
+import { CollegeCard } from "../../../components";
+import { images } from "../../../constants";
 
 const Colleges = () => {
   const { colleges } = useContext(DataContext);

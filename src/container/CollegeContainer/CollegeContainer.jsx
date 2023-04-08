@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { images } from "../constants";
-import { CollegeCard, Spinner } from "../components";
+import { images } from "../../constants";
+import { CollegeCard, Spinner } from "../../components";
 
 const CollegeContainer = () => {
   const [colleges, setColleges] = React.useState([]);

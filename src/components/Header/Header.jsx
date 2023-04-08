@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { images } from "../constants";
+import { images } from "../../constants";
 
 const Header = () => {
   const imgArray = [images.home_image, images.image1, images.image2];

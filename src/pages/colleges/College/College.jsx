@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import { DataContext } from "../../context/DataContext";
-import { images } from "../../constants";
+import { DataContext } from "../../../context/DataContext";
+import { images } from "../../../constants";
 
 const Event = () => {
   const { colleges } = useContext(DataContext);

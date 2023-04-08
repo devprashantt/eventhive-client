@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { images } from "./../constants";
+import { images } from "../../constants";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
 
-  const handleClick = async () => {};
+  const handleClick = async () => {
+    const res = await fetch("http://localhost:3000/subscriber", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert("Subscribed successfully");
+    } else {
+      alert("Something went wrong");
+    }
+  };
 
   const handleChange = (e) => {
     setEmail(e.target.value);

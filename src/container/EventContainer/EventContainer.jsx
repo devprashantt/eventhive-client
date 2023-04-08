@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { EventCard, Spinner } from "./../components";
-import { formatDate } from "./../utils";
-import { images } from "./../constants";
+import { EventCard, Spinner } from "../../components";
+import { formatDate } from "../../utils";
+import { images } from "../../constants";
 import axios from "axios";
 
 const EventContainer = () => {

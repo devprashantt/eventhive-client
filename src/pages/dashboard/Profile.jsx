@@ -7,6 +7,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     console.log("Navigating to main page...");
     navigate("/");
   };

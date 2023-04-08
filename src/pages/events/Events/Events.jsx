@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
-import { formatDate } from "../../utils";
-import { EventCard } from "../../components";
-import { images } from "../../constants";
+import { formatDate } from "../../../utils";
+import { EventCard } from "../../../components";
+import { images } from "../../../constants";
 
 const Events = () => {
   const { events } = useContext(DataContext);

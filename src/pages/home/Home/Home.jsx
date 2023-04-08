@@ -2,8 +2,8 @@ import {
   EventContainer,
   DropdownContainer,
   CollegeContainer,
-} from "../../container";
-import { Header, Footer } from "../../components";
+} from "../../../container";
+import { Header, Footer } from "../../../components";
 
 function Home() {
   return (
