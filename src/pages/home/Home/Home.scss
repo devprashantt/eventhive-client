@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .home {
     position: relative;
     width: 100%;
@@ -5,4 +7,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.home__button {
+    button {
+        margin: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 40px;
+        gap: 10px;
+        background: $primary-color;
+        border-radius: 5px;
+
+        font-family: "Product Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: $white-color;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
 }

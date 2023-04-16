@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .event__container {
     display: flex;
     flex-direction: column;
@@ -66,13 +68,13 @@
 
     .event__list {
         width: 100%;
+        height: 100%;
+
         display: flex;
-        flex-wrap: wrap;
-
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-
-        gap: 30px;
+        flex-wrap: wrap;
+        gap: 2rem;
 
         button {
             margin-top: 1rem;

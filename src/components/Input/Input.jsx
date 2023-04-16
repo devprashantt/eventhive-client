@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Input.scss";
+
 const Input = ({ type, placeholder, label, value, onChange }) => {
   return (
     <div className="input__box">

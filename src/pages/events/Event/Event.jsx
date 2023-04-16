@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import { DataContext } from "../../../context/DataContext";
 
+import "./Event.scss";
+import { DataContext } from "../../../context/DataContext";
 import { images } from "../../../constants";
 import { EventCard, Register, Map } from "../../../components";
 import { EventContainer } from "../../../container";

@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
+
+import "./Colleges.scss";
 import { CollegeCard } from "../../../components";
 import { images } from "../../../constants";
 
@@ -10,7 +12,6 @@ const Colleges = () => {
   const [filteredColleges, setFilteredColleges] = useState(colleges);
 
   useEffect(() => {
-    // filter colleges based on search input
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -18,7 +19,6 @@ const Colleges = () => {
   }, [search, colleges]);
 
   const handleSearch = () => {
-    // update filteredColleges based on search input
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );

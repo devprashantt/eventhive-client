@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+import "./Home.scss";
 import {
   EventContainer,
   DropdownContainer,
@@ -11,7 +14,18 @@ function Home() {
       <Header />
       <DropdownContainer />
       <EventContainer />
+      <div className="home__button">
+        <Link to="/events">
+          <button>Load More...</button>
+        </Link>
+      </div>
+
       <CollegeContainer />
+      <div className="home__button">
+        <Link to="/colleges">
+          <button>Show All</button>
+        </Link>
+      </div>
     </div>
   );
 }

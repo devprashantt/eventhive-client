@@ -1,48 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import "./EventContainer.scss";
 import { EventCard, Spinner } from "../../components";
 import { formatDate } from "../../utils";
 import { images } from "../../constants";
-import axios from "axios";
+import { DataContext } from "../../context/DataContext";
 
 const EventContainer = () => {
-  const [events, setEvents] = useState([]);
-  const [originalEvents, setOriginalEvents] = useState([]);
+  const { events } = useContext(DataContext);
 
-  const [numToShow, setNumToShow] = useState(6);
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [eventsResponse] = await Promise.all([
-          axios.get("http://localhost:3000/events"),
-        ]);
-        setEvents(eventsResponse.data);
-        setOriginalEvents(eventsResponse.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleSearch = () => {
-    const filteredEvents = events.filter((event) =>
+    const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
-    setEvents(filteredEvents);
+    setFilteredEvents(filtered);
+  }, [search, events]);
+
+  const handleSearch = () => {
+    const filtered = events.filter((event) =>
+      event.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredEvents(filtered);
   };
 
   const handleReset = () => {
     setSearch("");
-    setEvents(originalEvents);
+    setFilteredEvents(events);
   };
-
-  const visibleEvents = events.slice(0, numToShow);
 
   return (
     <div className="event__container">
@@ -67,39 +55,30 @@ const EventContainer = () => {
           )}
         </div>
       </div>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <div className="event__list">
-          {visibleEvents.length > 0 ? (
-            <>
-              {visibleEvents.map((event) => (
-                <Link key={event._id} to={`/events/${event._id}`}>
-                  <EventCard
-                    key={event._id}
-                    name={event.name}
-                    date={formatDate(event.date)}
-                    time={event.time}
-                    location={event.location}
-                    status={event.status}
-                    img={event.img}
-                  />
-                </Link>
-              ))}
-              {visibleEvents.length < events.length && (
-                <Link to="/events">
-                  <button>Load More...</button>
-                </Link>
-              )}
-            </>
-          ) : (
-            <div className="event__list__empty">
-              <img src={images.dummy} alt="No events found" />
-              <p>No events found</p>
-            </div>
-          )}
-        </div>
-      )}
+      <div className="event__list">
+        {filteredEvents.length > 0 ? (
+          <>
+            {filteredEvents.slice(0, 6).map((event) => (
+              <Link key={event._id} to={`/events/${event._id}`}>
+                <EventCard
+                  key={event._id}
+                  name={event.name}
+                  date={formatDate(event.date)}
+                  time={event.time}
+                  location={event.location}
+                  status={event.status}
+                  img={event.img}
+                />
+              </Link>
+            ))}
+          </>
+        ) : (
+          <div className="event__list__empty">
+            <img src={images.dummy} alt="No events found" />
+            <p>No events found</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

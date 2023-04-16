@@ -1,47 +1,37 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import "./CollegeContainer.scss";
 import { images } from "../../constants";
 import { CollegeCard, Spinner } from "../../components";
+import { DataContext } from "../../context/DataContext";
 
 const CollegeContainer = () => {
-  const [colleges, setColleges] = React.useState([]);
-  const [originalColleges, setOriginalColleges] = useState([]);
+  const { colleges } = useContext(DataContext);
 
-  const [numToShow, setNumToShow] = useState(6);
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+
+  const [filteredColleges, setFilteredColleges] = useState(colleges);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [collegesResponse] = await Promise.all([
-          axios.get("http://localhost:3000/colleges"),
-        ]);
-        setColleges(collegesResponse.data);
-        setOriginalColleges(collegesResponse.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleSearch = () => {
-    const filteredEvents = colleges.filter((college) =>
+    const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
-    setColleges(filteredEvents);
+    setFilteredColleges(filtered);
+  }, [search, colleges]);
+
+  const handleSearch = () => {
+    const filtered = colleges.filter((college) =>
+      college.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredColleges(filtered);
   };
 
   const handleReset = () => {
     setSearch("");
-    setColleges(originalEvents);
+    setFilteredColleges(colleges);
   };
-
-  const visibleColleges = colleges.slice(0, numToShow);
 
   return (
     <div className="college__container">
@@ -67,36 +57,27 @@ const CollegeContainer = () => {
         </div>
       </div>
       <div className="college__container__body">
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <div className="college__container__body__list">
-            {visibleColleges.length > 0 ? (
-              <>
-                {visibleColleges.map((college) => (
-                  <Link key={college._id} to={`/colleges/${college._id}`}>
-                    <CollegeCard
-                      key={college._id}
-                      name={college.name}
-                      image={college.imgUrl}
-                      location={college.location}
-                    />
-                  </Link>
-                ))}
-                {visibleColleges.length < colleges.length && (
-                  <Link to="/colleges">
-                    <button>Load More...</button>
-                  </Link>
-                )}
-              </>
-            ) : (
-              <div className="college__container__body__list__empty">
-                <img src={images.dummy} alt="No college found" />
-                <p>No events found</p>
-              </div>
-            )}
-          </div>
-        )}
+        <div className="college__container__body__list">
+          {filteredColleges.length > 0 ? (
+            <>
+              {filteredColleges.slice(0, 6).map((college) => (
+                <Link key={college._id} to={`/colleges/${college._id}`}>
+                  <CollegeCard
+                    key={college._id}
+                    name={college.name}
+                    image={college.imgUrl}
+                    location={college.location}
+                  />
+                </Link>
+              ))}
+            </>
+          ) : (
+            <div className="college__container__body__list__empty">
+              <img src={images.dummy} alt="No college found" />
+              <p>No events found</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

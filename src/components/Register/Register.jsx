@@ -1,4 +1,6 @@
 import React from "react";
+
+import "./Register.scss";
 import { images } from "../../constants";
 
 const Register = () => {
@@ -9,10 +11,6 @@ const Register = () => {
       </div>
       <div className="ticket__time">
         <h2>Saturdat, March 18 2023, 9.30PM</h2>
-      </div>
-      <div className="ticket__calendar">
-        <img src={images.plusprimary} alt="plus" />
-        <p>Add to calendar</p>
       </div>
       <div className="ticket__book">
         <button>Book Now</button>

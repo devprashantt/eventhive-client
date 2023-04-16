@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Dropdown } from "../../components";
 import axios from "axios";
+
+import { Dropdown } from "../../components";
+import "./DropdownContainer.scss";
 
 const DropdownContainer = () => {
   const [colleges, setColleges] = useState([]);

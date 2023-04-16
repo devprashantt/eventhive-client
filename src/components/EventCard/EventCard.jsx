@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./EventCard.scss";
+
 const EventCard = ({ name, date, time, location, img }) => {
   return (
     <div className="event">

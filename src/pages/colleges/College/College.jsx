@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+
+import "./College.scss";
 import { DataContext } from "../../../context/DataContext";
 import { images } from "../../../constants";
 

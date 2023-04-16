@@ -6,8 +6,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.clear();
     console.log("Navigating to main page...");
     navigate("/");
   };

@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../../context/DataContext";
 import { Link } from "react-router-dom";
+
+import "./Events.scss";
+import { DataContext } from "../../../context/DataContext";
 import { formatDate } from "../../../utils";
 import { EventCard } from "../../../components";
 import { images } from "../../../constants";
@@ -12,7 +14,6 @@ const Events = () => {
   const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
-    // filter events based on search input
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -20,7 +21,6 @@ const Events = () => {
   }, [search, events]);
 
   const handleSearch = () => {
-    // update filteredEvents based on search input
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );

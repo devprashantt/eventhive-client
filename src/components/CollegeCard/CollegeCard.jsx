@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./CollegeCard.scss";
+
 const CollegeCard = ({ name, location, image }) => {
   return (
     <div className="college__card">

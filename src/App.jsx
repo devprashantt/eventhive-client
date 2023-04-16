@@ -1,4 +1,6 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, BrowserRouter } from "react-router-dom";
+
+import { DataProvider } from "./context/DataProvider";
 import { NavigationBar, Footer } from "./components";
 import {
   Home,
@@ -11,15 +13,26 @@ import {
   Colleges,
   College,
 } from "./pages";
+import { useEffect } from "react";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token") !== null;
   const { pathname } = useLocation();
 
+  const handleLogout = () => {
+    localStorage.clear();
+    isLoggedIn = false;
+    navigate("/");
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
-    <>
+    <DataProvider>
       {pathname !== "/signin" && pathname !== "/signup" && (
-        <NavigationBar isLoggedIn={isLoggedIn} />
+        <NavigationBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       )}
 
       <Routes>
@@ -42,7 +55,7 @@ function App() {
         )}
       </Routes>
       <Footer />
-    </>
+    </DataProvider>
   );
 }
 
