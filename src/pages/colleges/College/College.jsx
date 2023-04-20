@@ -16,43 +16,41 @@ const Event = () => {
   }
 
   return (
-    <div className="college">
+    <div
+      className="college"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1rem",
+      }}
+    >
       <div className="college__image">
         <img src={college.imgUrl} alt={college.name} />
         <Link to="/colleges">
           <div className="college__image__button">
-            <img src={images.caretleft} alt="careleft" />
-            <p>Back to colleges</p>
+            <p>Back</p>
           </div>
         </Link>
       </div>
+
       <div className="college__content">
+        <div className="college__logo">
+          <img
+            src={college.logoUrl}
+            alt="logo"
+            style={{
+              width: "10rem",
+              height: "10rem",
+              objectFit: "contain",
+              margin: "2rem 0",
+            }}
+          />
+        </div>
         <div className="college__content__title">{college.name}</div>
         <div className="college__content__description">
-          <p>{/* {college.description} */}</p>
-          <p>
-            DesignHub organized a 3D Modeling Workshop using Blender on 16th
-            February at 5 PM. The workshop taught participants the magic of
-            creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement. DesignHub organized a 3D Modeling Workshop using Blender
-            on 16th February at 5 PM. The workshop taught participants the magic
-            of creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement. DesignHub organized a 3D Modeling Workshop using Blender
-            on 16th February at 5 PM. The workshop taught participants the magic
-            of creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement. DesignHub organized a 3D Modeling Workshop using Blender
-            on 16th February at 5 PM. The workshop taught participants the magic
-            of creating stunning 3D models and animations using Blender. It was
-            suitable for both beginners and experienced users. The event was
-            followed by a blender-render competition, which added to the
-            excitement.
-          </p>
+          <p>{college.description}</p>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "./NavigationBar.scss";
-import { images } from "./../../constants";
+import "./Navbar.scss";
+import { images } from "../../constants";
 
-const NavigationBar = ({ isLoggedIn, handleLogout }) => {
+const Navbar = ({ isLoggedIn }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -21,6 +21,12 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    isLoggedIn = false;
+    navigate("/");
+  };
+
   useEffect(() => {
     window.addEventListener("click", handleClickOutside);
 
@@ -35,6 +41,17 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
         <img src={images.logo} alt="logo" className="navigation__logo" />
       </Link>
 
+      <div className="navigation__menu">
+        <Link to="colleges" className="menu">
+          Colleges
+        </Link>
+        <Link to="events" className="menu">
+          Events
+        </Link>
+        <Link className="menu">About</Link>
+        <Link className="menu">Contact</Link>
+      </div>
+
       <div className="navigation__right">
         {isLoggedIn ? (
           <>
@@ -44,7 +61,7 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
             <div className="navigation__profile" ref={dropdownRef}>
               <img
                 className="navigation__profile__image"
-                src={images.google}
+                src={userData.profile ? userData.profile : images.google}
                 alt="Profile image"
                 onClick={toggleDropdown}
                 style={{ cursor: "pointer" }}
@@ -59,18 +76,11 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
                 >
                   <div role="none">
                     <Link
-                      to="/profile"
+                      to="/dashboard"
                       className="navigation__profile__options__item"
                       role="menuitem"
                     >
                       Your Profile
-                    </Link>
-                    <Link
-                      to="/settings"
-                      className="navigation__profile__options__item"
-                      role="menuitem"
-                    >
-                      Settings
                     </Link>
                     <button
                       onClick={handleLogout}
@@ -86,10 +96,10 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
           </>
         ) : (
           <>
-            <Link to="/signin" className="navigation__auth">
+            <Link to="/signin" className="navigation__signin">
               Login
             </Link>
-            <Link to="/signup" className="navigation__auth">
+            <Link to="/signup" className="navigation__signup">
               Register
             </Link>
           </>
@@ -99,4 +109,4 @@ const NavigationBar = ({ isLoggedIn, handleLogout }) => {
   );
 };
 
-export default NavigationBar;
+export default Navbar;

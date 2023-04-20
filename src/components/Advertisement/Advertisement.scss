@@ -1,0 +1,34 @@
+@import "./../../styles/Variables.scss";
+
+.ad {
+    margin-top: 3rem;
+
+    width: 100%;
+    color: white;
+
+    background-color: $navy-blue-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+
+    .ad__img {
+        padding-top: 2rem;
+    }
+
+    .ad__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5px;
+
+        button {
+            padding: 1rem;
+            border-radius: 5px;
+            color: white;
+            background-color: $primary-color;
+        }
+    }
+}

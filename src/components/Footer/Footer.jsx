@@ -6,8 +6,10 @@ import { images } from "../../constants";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [active, setActive] = useState(false);
 
   const handleClick = async () => {
+    setActive(true);
     const res = await fetch("http://localhost:3000/subscriber", {
       method: "POST",
       headers: {
@@ -15,12 +17,11 @@ const Footer = () => {
       },
       body: JSON.stringify({ email }),
     });
+    setActive(false);
+
     const data = await res.json();
-    if (data.success) {
-      alert("Subscribed successfully");
-    } else {
-      alert("Something went wrong");
-    }
+
+    alert(data.message);
   };
 
   const handleChange = (e) => {
@@ -43,7 +44,7 @@ const Footer = () => {
           onChange={handleChange}
         />
         <button className="footer__mail__button" onClick={handleClick}>
-          Subscribe
+          {active ? "Subscribing..." : "Subscribe"}
         </button>
       </div>
       <div className="footer__menu">

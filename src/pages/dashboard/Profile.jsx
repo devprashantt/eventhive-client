@@ -1,8 +1,7 @@
 import React from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
+const UserProfile = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,4 +19,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UserProfile;

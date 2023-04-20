@@ -1,14 +1,33 @@
 @import "../../styles/variables.scss";
 
 .navigation {
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 2rem;
+    padding: 1rem 2rem;
     background-color: #fff;
 
-    margin-bottom: 1%;
+    margin-bottom: 1.5%;
     border-bottom: 1px solid #e6ebf4;
+
+    .navigation__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        font-size: large;
+        font-weight: 500;
+
+        .menu {
+            color: black;
+            text-decoration: none;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
 
     .navigation__logo {
         display: flex;
@@ -47,15 +66,15 @@
             }
 
             .navigation__profile__options {
+                z-index: 100;
                 position: absolute;
                 top: 0;
                 right: 0;
-                margin-top: 1rem;
+                margin-top: 2rem;
                 width: 14rem;
                 border-radius: 0.5rem;
                 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 6px 0 rgba(0, 0, 0, 0.1); /* equivalent to shadow-lg in Tailwind */
                 background-color: #fff;
-                border: 1px solid #000;
                 outline: none;
 
                 div {
@@ -72,7 +91,6 @@
                     }
 
                     .navigation__profile__options__item {
-                        z-index: 100;
                         display: block;
                         padding-left: 1rem;
                         padding-right: 1rem;
@@ -95,13 +113,23 @@
             }
         }
 
-        .navigation__auth {
+        .navigation__signin {
             font-weight: 500;
             color: #6469ff;
             padding-left: 1rem;
             padding-right: 1rem;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
+            border-radius: 0.375rem;
+            border-color: #6469ff;
+            border-width: 0.125rem;
+        }
+
+        .navigation__signup {
+            font-weight: 500;
+            background-color: #6469ff;
+            color: white;
+            padding: 0.6rem 1rem;
             border-radius: 0.375rem;
             border-color: #6469ff;
             border-width: 0.125rem;

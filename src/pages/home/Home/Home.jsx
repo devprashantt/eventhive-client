@@ -6,7 +6,7 @@ import {
   DropdownContainer,
   CollegeContainer,
 } from "../../../container";
-import { Header, Footer } from "../../../components";
+import { Header, Advertisement } from "../../../components";
 
 function Home() {
   return (
@@ -14,18 +14,10 @@ function Home() {
       <Header />
       <DropdownContainer />
       <EventContainer />
-      <div className="home__button">
-        <Link to="/events">
-          <button>Load More...</button>
-        </Link>
-      </div>
+
+      <Advertisement />
 
       <CollegeContainer />
-      <div className="home__button">
-        <Link to="/colleges">
-          <button>Show All</button>
-        </Link>
-      </div>
     </div>
   );
 }

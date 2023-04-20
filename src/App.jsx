@@ -1,29 +1,27 @@
 import { Route, Routes, useLocation, BrowserRouter } from "react-router-dom";
 
 import { DataProvider } from "./context/DataProvider";
-import { NavigationBar, Footer } from "./components";
+import { Navbar, Footer } from "./components";
 import {
   Home,
   Signin,
   Signup,
-  Profile,
   CreateEvent,
   Events,
   Event,
   Colleges,
   College,
+  Layout,
+  User,
+  UserProfile,
+  UserEvents,
+  UserMessages,
 } from "./pages";
 import { useEffect } from "react";
 
 function App() {
-  const isLoggedIn = localStorage.getItem("token") !== null;
+  var isLoggedIn = localStorage.getItem("token") !== null;
   const { pathname } = useLocation();
-
-  const handleLogout = () => {
-    localStorage.clear();
-    isLoggedIn = false;
-    navigate("/");
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,9 +29,9 @@ function App() {
 
   return (
     <DataProvider>
-      {pathname !== "/signin" && pathname !== "/signup" && (
-        <NavigationBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      )}
+      {!pathname.includes("/signin") &&
+        !pathname.includes("/signup") &&
+        !pathname.includes("/dashboard") && <Navbar isLoggedIn={isLoggedIn} />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -49,12 +47,20 @@ function App() {
 
         {isLoggedIn && (
           <>
-            <Route path="/profile" element={<Profile />} />
+            <Route element={<Layout />}>
+              <Route path="/dashboard" element={<User />} />
+              <Route path="/dashboard/events" element={<UserEvents />} />
+              <Route path="/dashboard/messages" element={<UserMessages />} />
+              <Route path="/dashboard/profile" element={<UserProfile />} />
+            </Route>
             <Route path="/create-event" element={<CreateEvent />} />
           </>
         )}
       </Routes>
-      <Footer />
+
+      {!pathname.includes("/signin") &&
+        !pathname.includes("/signup") &&
+        !pathname.includes("/dashboard") && <Footer />}
     </DataProvider>
   );
 }

@@ -74,7 +74,7 @@ const CollegeContainer = () => {
           ) : (
             <div className="college__container__body__list__empty">
               <img src={images.dummy} alt="No college found" />
-              <p>No events found</p>
+              <p>No college found</p>
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 import logo from '../assets/logo.svg';
 import dummy from '../assets/dummy.svg';
+import profile from '../assets/profile.svg';
 
 import image1 from '../assets/events/image1.svg';
 import image2 from '../assets/events/image2.svg';
@@ -19,6 +20,7 @@ import MapPin from '../assets/icons/Phosphor icons/MapPin.svg';
 import signup_image from '../assets/img/signup-image.png';
 import signin_image from '../assets/img/signin-image.png';
 import home_image from '../assets/img/home-image.png';
+import ad_image from '../assets/img/ad-image.png';
 
 import facebook from '../assets/social/Facebook.svg';
 import twitter from '../assets/social/Twitter.svg';
@@ -43,6 +45,7 @@ export default {
     plusprimary,
     signup_image,
     signin_image,
+    ad_image,
     facebook,
     twitter,
     linkedin,
@@ -54,5 +57,6 @@ export default {
     FacebookLogo,
     LinkedinLogo,
     InstagramLogo,
-    MapPin
+    MapPin,
+    profile
 };
