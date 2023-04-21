@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
-@import "Variables.scss";
+@import "./Variables.scss";
 
 * {
     box-sizing: border-box;
@@ -13,7 +13,7 @@ body {
 
 body {
     font-family: "DM Sans", sans-serif;
-    background-color: $bg-grey-color;
+    background-color: #f8f8fa;
 }
 
 button {
@@ -38,12 +38,12 @@ input {
     border: none;
 
     &::placeholder {
-        color: $grey-color;
+        color: #687c94;
     }
 
     &:focus {
-        color: $primary-color;
-        outline: 0.5px solid $primary-color;
+        color: #7848f4;
+        outline: 0.5px solid #7848f4;
     }
 }
 

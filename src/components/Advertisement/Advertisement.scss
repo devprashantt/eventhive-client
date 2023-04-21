@@ -1,4 +1,4 @@
-@import "./../../styles/Variables.scss";
+@import "./../../styles/variables.scss";
 
 .ad {
     margin-top: 3rem;
@@ -6,7 +6,7 @@
     width: 100%;
     color: white;
 
-    background-color: $navy-blue-color;
+    background-color: #10107b;
 
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@
             padding: 1rem;
             border-radius: 5px;
             color: white;
-            background-color: $primary-color;
+            background-color: #7848f4;
         }
     }
 }

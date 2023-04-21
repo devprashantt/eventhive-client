@@ -61,7 +61,7 @@ const Navbar = ({ isLoggedIn }) => {
             <div className="navigation__profile" ref={dropdownRef}>
               <img
                 className="navigation__profile__image"
-                src={userData.profile ? userData.profile : images.google}
+                src={images.google}
                 alt="Profile image"
                 onClick={toggleDropdown}
                 style={{ cursor: "pointer" }}

@@ -36,7 +36,7 @@
                 &__icon {
                     width: 15%;
                     height: 46px;
-                    background: $primary-color;
+                    background: #7848f4;
                     border-radius: 5px;
                     display: flex;
                     justify-content: center;
@@ -59,7 +59,7 @@
             line-height: 44px;
 
             span {
-                color: $primary-color;
+                color: #7848f4;
             }
         }
     }
@@ -82,7 +82,7 @@
             align-items: center;
             padding: 15px 40px;
             gap: 10px;
-            background: $primary-color;
+            background: #7848f4;
             border-radius: 5px;
 
             font-family: "Product Sans";
@@ -94,7 +94,7 @@
             align-items: center;
             text-align: center;
 
-            color: $white-color;
+            color: #ffffff;
             border: none;
             outline: none;
             cursor: pointer;
@@ -117,7 +117,7 @@
             font-size: 36px;
             line-height: 44px;
             text-align: center;
-            color: $black-color;
+            color: #131315;
         }
 
         p {
@@ -127,7 +127,7 @@
             font-size: 16px;
             line-height: 19px;
             text-align: center;
-            color: $black-color;
+            color: #131315;
         }
     }
 }

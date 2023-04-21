@@ -48,14 +48,14 @@
             font-weight: 600;
             font-size: 20px;
             line-height: 19px;
-            color: $primary-color;
+            color: #7848f4;
         }
 
         &__location {
             font-size: 1.2rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            color: $black-color;
+            color: #131315;
         }
         &__button {
             width: 100%;
@@ -68,11 +68,11 @@
             gap: 10px;
 
             position: relative;
-            background: $primary-color;
+            background: #7848f4;
             border-radius: 5px;
             cursor: pointer;
             border: none;
-            color: $white-color;
+            color: #ffffff;
         }
     }
 }

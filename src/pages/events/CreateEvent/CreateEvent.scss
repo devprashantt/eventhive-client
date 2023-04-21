@@ -49,12 +49,12 @@
                 border: none;
 
                 &::placeholder {
-                    color: $grey-color;
+                    color: #687c94;
                 }
 
                 &:focus {
-                    color: $primary-color;
-                    outline: 0.5px solid $primary-color;
+                    color: #7848f4;
+                    outline: 0.5px solid #7848f4;
                 }
             }
 
@@ -62,7 +62,7 @@
                 border: none;
                 background-color: white;
                 border-right: 15px solid transparent;
-                color: $grey-color;
+                color: #687c94;
             }
         }
 
@@ -86,7 +86,7 @@
             color: white;
             padding: 1rem 0;
             border-radius: 5px;
-            background-color: $primary-color;
+            background-color: #7848f4;
         }
     }
 }
