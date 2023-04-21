@@ -8,11 +8,16 @@ import { EventCard, Register, Map } from "../../../components";
 import { EventContainer } from "../../../container";
 
 const Event = () => {
-  const { events, colleges } = useContext(DataContext);
+  const { events } = useContext(DataContext);
+  const { colleges } = useContext(DataContext);
   const { id } = useParams();
 
   const event = events.find((event) => event._id === id);
   const college = colleges.find((college) => college._id === event.colleges[0]);
+
+  console.log(colleges);
+  console.log(event.colleges[0]);
+  console.log(college);
 
   if (!event) {
     return <div>Event not found</div>;
@@ -24,15 +29,22 @@ const Event = () => {
         <img src={event.img} alt={event.name} />
         <div className="register__header__detail">
           <div className="register__header__detail__content">
-            <div className="register__header__detail__content__button">
-              <img src={images.caretleft} alt="Back" />
-              <p>Back</p>
-            </div>
+            <Link to="/">
+              <div className="register__header__detail__content__button">
+                <p
+                  style={{
+                    padding: "10px",
+                  }}
+                >
+                  Back
+                </p>
+              </div>
+            </Link>
             <div className="register__header__detail__content__title">
               {event.name}
             </div>
             <div className="register__header__detail__content__college">
-              {college.name}
+              {/* {college.name} */}
             </div>
             <div className="register__header__detail__content__description">
               {event.description}

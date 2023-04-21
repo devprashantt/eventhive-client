@@ -8,6 +8,7 @@ import { images } from "../../../constants";
 
 const Colleges = () => {
   const { colleges } = useContext(DataContext);
+  console.log(colleges);
   const [search, setSearch] = useState("");
   const [filteredColleges, setFilteredColleges] = useState(colleges);
 

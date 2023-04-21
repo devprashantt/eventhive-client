@@ -17,6 +17,10 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
       path: "/dashboard/events",
     },
     {
+      text: "Scheduler",
+      path: "/dashboard/scheduler",
+    },
+    {
       text: "Messages",
       path: "/dashboard/messages",
     },
@@ -106,6 +110,18 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
             </div>
           </div>
         ))}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          gap: "1rem",
+          marginTop: "auto",
+        }}
+      >
+        Give feedback
       </div>
     </div>
   );

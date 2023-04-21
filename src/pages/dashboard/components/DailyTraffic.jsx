@@ -17,44 +17,32 @@ import { RiArrowUpSFill } from "react-icons/ri";
 export default function DailyTraffic(props) {
   const { ...rest } = props;
 
-  // Chakra Color Mode
-  const textColor = useColorModeValue("secondaryGray.900", "white");
   return (
-    <Card align="center" direction="column" w="100%" {...rest}>
+    <Card px="10" align="center" direction="column" w="100%" {...rest}>
       <Flex justify="space-between" align="start" px="10px" pt="5px">
         <Flex flexDirection="column" align="start" me="20px">
           <Flex w="100%">
-            <Text
-              me="auto"
-              color="secondaryGray.600"
-              fontSize="sm"
-              fontWeight="500"
-            >
+            <Text me="auto" color="gray" fontSize="sm" fontWeight="500">
               Daily Traffic
             </Text>
           </Flex>
           <Flex align="end">
             <Text
-              color={textColor}
+              color="black"
               fontSize="34px"
               fontWeight="700"
               lineHeight="100%"
             >
               2.579
             </Text>
-            <Text
-              ms="6px"
-              color="secondaryGray.600"
-              fontSize="sm"
-              fontWeight="500"
-            >
+            <Text ms="6px" color="gray" fontSize="sm" fontWeight="500">
               Visitors
             </Text>
           </Flex>
         </Flex>
         <Flex align="center">
-          <Icon as={RiArrowUpSFill} color="green.500" />
-          <Text color="green.500" fontSize="sm" fontWeight="700">
+          <Icon as={RiArrowUpSFill} color="green" />
+          <Text color="green" fontSize="sm" fontWeight="700">
             +2.45%
           </Text>
         </Flex>

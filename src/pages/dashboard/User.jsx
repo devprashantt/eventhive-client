@@ -1,9 +1,9 @@
 import React from "react";
 
-import MiniCalendar from "../../components/Calendar/Calendar";
 import WeeklyRevenue from "./components/WeeklyRevenue";
 import DailyTraffic from "./components/DailyTraffic";
-import PieChart from "../../components/Charts/PieChart";
+import PieCard from "./components/PieCard";
+import TotalSpent from "./components/TotalSpent";
 
 const User = () => {
   const cards = [{}, {}, {}, {}];
@@ -53,15 +53,43 @@ const User = () => {
       />
       <div
         style={{
-          width: "100%",
           display: "grid",
-          gridTemplateColumns: "repeat(1, 1fr)",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "10px",
+        }}
+      ></div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "10px",
         }}
       >
-        <MiniCalendar
-          h="100%"
-          selectRange={true}
+        <DailyTraffic
           style={{
+            backgroundColor: "white",
+            borderRadius: "10px",
+          }}
+        />
+        <PieCard
+          style={{
+            width: "100%",
+            backgroundColor: "white",
+            borderRadius: "10px",
+            height: "100%",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(1, 1fr)",
+          gap: "10px",
+        }}
+      >
+        <TotalSpent
+          style={{
+            width: "100%",
             backgroundColor: "white",
             borderRadius: "10px",
           }}

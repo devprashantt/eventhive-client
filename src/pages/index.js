@@ -16,8 +16,7 @@ import UserEvents from './dashboard/Events';
 import UserMessages from './dashboard/Messages';
 import UserProfile from './dashboard/Profile';
 import User from './dashboard/User';
+import Scheduler from './dashboard/Scheduler';
 
 
-
-
-export { Signin, Signup, Home, CreateEvent, UserProfile, Event, Events, Colleges, College, Layout, UserMessages, UserEvents, User };
+export { Signin, Signup, Home, CreateEvent, UserProfile, Event, Events, Colleges, College, Layout, UserMessages, UserEvents, User, Scheduler };
