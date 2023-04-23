@@ -21,6 +21,10 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
       path: "/dashboard/scheduler",
     },
     {
+      text: "Task",
+      path: "/dashboard/task",
+    },
+    {
       text: "Messages",
       path: "/dashboard/messages",
     },
@@ -59,11 +63,8 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-          margin: "1rem 0",
-          gap: "0.5rem",
         }}
       >
-        <div className="sidebar__header__avatar">Logo</div>
         <div className="sidebar__header__logo">
           <Link to="/">
             <h1>
@@ -110,18 +111,6 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
             </div>
           </div>
         ))}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: "1rem",
-          marginTop: "auto",
-        }}
-      >
-        Give feedback
       </div>
     </div>
   );

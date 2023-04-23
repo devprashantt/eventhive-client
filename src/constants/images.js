@@ -1,4 +1,5 @@
 import logo from '../assets/logo.svg';
+import logo_icon from '../assets/logo_icon.png';
 import dummy from '../assets/dummy.svg';
 import profile from '../assets/profile.svg';
 
@@ -58,5 +59,6 @@ export default {
     LinkedinLogo,
     InstagramLogo,
     MapPin,
-    profile
+    profile,
+    logo_icon
 };

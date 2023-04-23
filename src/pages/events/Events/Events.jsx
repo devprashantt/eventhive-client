@@ -62,7 +62,7 @@ const Events = () => {
               date={formatDate(event.date)}
               time={event.time}
               location={event.location}
-              img={event.img}
+              img={event.banner}
             />
           </Link>
         ))}

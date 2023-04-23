@@ -9,31 +9,13 @@ function CreateEvent() {
     name: "",
     description: "",
     date: "",
+    startTime: "",
+    endTime: "",
     location: "",
     img: "",
     collegeOptions: [],
     selectedCollege: "",
   });
-
-  const [tags, setTags] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === "Enter" && inputValue.trim() !== "") {
-      setTags([...tags, inputValue.trim()]);
-      setInputValue("");
-    }
-  };
-
-  const handleRemoveTag = (tag) => {
-    setTags(tags.filter((t) => t !== tag));
-  };
-
-  console.log(tags);
 
   useEffect(() => {
     async function fetchColleges() {
@@ -52,8 +34,10 @@ function CreateEvent() {
       name: eventData.name,
       description: eventData.description,
       date: eventData.date,
+      startTime: eventData.startTime,
+      endTime: eventData.endTime,
       location: eventData.location,
-      img: eventData.img,
+      banner: eventData.img,
       college: eventData.selectedCollege,
     };
     console.log("Event created successfully");
@@ -66,6 +50,8 @@ function CreateEvent() {
     const { name, value } = event.target;
     setEventData((prevState) => ({ ...prevState, [name]: value }));
   }
+
+  console.log(eventData);
 
   return (
     <div className="create__event">
@@ -110,20 +96,6 @@ function CreateEvent() {
               placeholder="Write description about your event..."
             />
           </label>
-
-          <div>
-            {tags.map((tag) => (
-              <div key={tag}>
-                {tag} <button onClick={() => handleRemoveTag(tag)}>X</button>
-              </div>
-            ))}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-              onKeyDown={handleInputKeyDown}
-            />
-          </div>
         </div>
 
         <div
@@ -159,11 +131,21 @@ function CreateEvent() {
           <div className="flex">
             <label style={{ flex: "1" }}>
               Start time:
-              <input type="time" />
+              <input
+                type="time"
+                name="startTime"
+                value={eventData.startTime}
+                onChange={handleChange}
+              />
             </label>
             <label style={{ flex: "1" }}>
               End Time:
-              <input type="time" />
+              <input
+                type="time"
+                name="endTime"
+                value={eventData.endTime}
+                onChange={handleChange}
+              />
             </label>
           </div>
         </div>

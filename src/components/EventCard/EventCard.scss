@@ -1,6 +1,5 @@
 .event {
     width: 350px;
-    height: 400px;
 
     display: flex;
     flex-direction: column;
@@ -23,11 +22,12 @@
 
     .event__image {
         img {
+            max-height: 200px;
             position: relative;
             width: 100%;
             height: 100%;
             border-radius: 10px 10px 0px 0px;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
 
@@ -38,8 +38,7 @@
         align-items: flex-start;
 
         width: 100%;
-
-        padding: 1rem 1rem;
+        padding: 1rem;
 
         .event__title {
             font-family: "Product Sans";

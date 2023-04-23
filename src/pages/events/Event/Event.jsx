@@ -26,7 +26,7 @@ const Event = () => {
   return (
     <div className="register">
       <div className="register__header">
-        <img src={event.img} alt={event.name} />
+        <img src={event.banner} alt={event.name} />
         <div className="register__header__detail">
           <div className="register__header__detail__content">
             <Link to="/">

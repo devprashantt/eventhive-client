@@ -2,7 +2,7 @@ import React from "react";
 
 import "./EventCard.scss";
 
-const EventCard = ({ name, date, time, location, img }) => {
+const EventCard = ({ name, date, time, location, img, description }) => {
   return (
     <div className="event">
       <div className="event__image">

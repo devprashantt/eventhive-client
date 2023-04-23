@@ -17,6 +17,7 @@ import {
   UserEvents,
   UserMessages,
   Scheduler,
+  Task,
 } from "./pages";
 import { useEffect } from "react";
 
@@ -52,6 +53,7 @@ function App() {
               <Route path="/dashboard" element={<User />} />
               <Route path="/dashboard/events" element={<UserEvents />} />
               <Route path="/dashboard/scheduler" element={<Scheduler />} />
+              <Route path="/dashboard/task" element={<Task />} />
               <Route path="/dashboard/messages" element={<UserMessages />} />
               <Route path="/dashboard/profile" element={<UserProfile />} />
             </Route>

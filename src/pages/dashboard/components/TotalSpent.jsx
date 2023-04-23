@@ -62,7 +62,7 @@ export default function TotalSpent(props) {
             </Text>
           </Flex>
         </Flex>
-        <Box minH="260px" minW="90%" mt="auto">
+        <Box minH="260px" minW="80%" mt="auto">
           <LineChart
             chartData={lineChartDataTotalSpent}
             chartOptions={lineChartOptionsTotalSpent}

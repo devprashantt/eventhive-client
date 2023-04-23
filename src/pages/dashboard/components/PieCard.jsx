@@ -4,7 +4,6 @@ import { Box, Flex, Text, Select, useColorModeValue } from "@chakra-ui/react";
 import Card from "../../../components/Card/Card";
 import PieChart from "../../../components/Charts/PieChart";
 import { pieChartData, pieChartOptions } from "../../../variables/charts";
-import { VSeparator } from "./../../../components/Separator/Separator";
 import React from "react";
 
 export default function Conversion(props) {

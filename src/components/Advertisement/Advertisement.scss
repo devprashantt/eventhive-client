@@ -30,3 +30,25 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .ad {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 0;
+
+        .ad__img {
+            img {
+                height: 200px;
+                width: 350px;
+            }
+        }
+
+        .ad__text {
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+}

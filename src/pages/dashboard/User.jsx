@@ -57,13 +57,6 @@ const User = () => {
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: "10px",
         }}
-      ></div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "10px",
-        }}
       >
         <DailyTraffic
           style={{
@@ -80,21 +73,13 @@ const User = () => {
           }}
         />
       </div>
-      <div
+      <TotalSpent
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(1, 1fr)",
-          gap: "10px",
+          width: "100%",
+          backgroundColor: "white",
+          borderRadius: "10px",
         }}
-      >
-        <TotalSpent
-          style={{
-            width: "100%",
-            backgroundColor: "white",
-            borderRadius: "10px",
-          }}
-        />
-      </div>
+      />
     </div>
   );
 };

@@ -67,7 +67,7 @@ const EventContainer = () => {
                   time={event.time}
                   location={event.location}
                   status={event.status}
-                  img={event.img}
+                  img={event.banner}
                 />
               </Link>
             ))}
