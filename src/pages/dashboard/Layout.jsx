@@ -51,17 +51,6 @@ const Layout = ({ children }) => {
         </div>
         {children}
         <Outlet />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "1.5rem",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          Footer
-        </div>
       </div>
     </div>
   );

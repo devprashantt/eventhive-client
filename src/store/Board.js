@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { boardData } from '../data'
+import { boardData } from '../variables'
 
 const useBoard = create((set) => ({
     board: boardData,

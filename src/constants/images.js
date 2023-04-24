@@ -22,6 +22,10 @@ import signup_image from '../assets/img/signup-image.png';
 import signin_image from '../assets/img/signin-image.png';
 import home_image from '../assets/img/home-image.png';
 import ad_image from '../assets/img/ad-image.png';
+import college1 from '../assets/img/college1.png';
+import college2 from '../assets/img/college2.png';
+import college3 from '../assets/img/college3.png';
+import event from '../assets/img/event.png';
 
 import facebook from '../assets/social/Facebook.svg';
 import twitter from '../assets/social/Twitter.svg';
@@ -60,5 +64,9 @@ export default {
     InstagramLogo,
     MapPin,
     profile,
-    logo_icon
+    logo_icon,
+    college1,
+    college2,
+    college3,
+    event
 };

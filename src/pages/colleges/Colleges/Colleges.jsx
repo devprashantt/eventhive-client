@@ -31,8 +31,58 @@ const Colleges = () => {
     setFilteredColleges(colleges);
   };
 
+  const imgArray = [images.college1, images.college2, images.college3];
+
   return (
     <div className="colleges">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "20px",
+        }}
+      >
+        <div
+          style={{
+            color: "black",
+            fontSize: "64px",
+            fontSmooth: "always",
+            fontWeight: "bold",
+            lineHeight: "1.2",
+          }}
+        >
+          Checkout your{" "}
+          <span
+            style={{
+              color: "#7848F4",
+            }}
+          >
+            college events
+          </span>{" "}
+          now!!
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            width: "100%",
+            gap: "20px",
+          }}
+        >
+          <div style={{}}></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <div className="colleges__header">
         <h1 className="colleges__header__name">Colleges</h1>
         <div className="colleges__header__input">

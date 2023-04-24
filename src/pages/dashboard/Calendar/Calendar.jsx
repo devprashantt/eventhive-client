@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
+
 import "./Calendar.scss";
 import useCalendar from "../../../store/Calendar";
 import { createEventId } from "../../../variables";
@@ -50,19 +51,19 @@ const Calendar = () => {
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           headerToolbar={{
-            left: "prev,next today",
+            left: "prev",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay",
+            right: "next",
           }}
           allDaySlot={false}
-          initialView="timeGridWeek"
+          initialView="dayGridMonth"
           slotDuration={"01:00:00"}
           editable={true}
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
           weekends={true}
-          nowIndicator={true}
+          nowIndicator={false}
           initialEvents={currentEvents}
           eventsSet={handleEvents}
           select={handleDateSelect}

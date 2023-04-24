@@ -39,10 +39,19 @@
     }
 
     &__container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: space-between;
+        // align-items: center;
+
+        // width: 100%;
+        // gap: 20px;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 20px;
+        justify-items: center;
         align-items: center;
-        gap: 40px;
+        width: 100%;
     }
 }
