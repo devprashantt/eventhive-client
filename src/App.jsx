@@ -64,7 +64,7 @@ function App() {
           </>
         )}
 
-        <Route path="/*" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
 
       {!pathname.includes("/signin") &&
