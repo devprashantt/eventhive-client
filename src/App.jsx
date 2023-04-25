@@ -48,7 +48,7 @@ function App() {
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<College />} />
 
-        {/* {isLoggedIn && (
+        {isLoggedIn && (
           <>
             <Route element={<Layout />}>
               <Route path="/dashboard/:id" element={<User />} />
@@ -63,19 +63,9 @@ function App() {
             </Route>
             <Route path="/create-event" element={<CreateEvent />} />
           </>
-        )} */}
+        )}
 
-        <Route element={<Layout />}>
-          <Route path="/dashboard/:id" element={<User />} />
-          <Route path="/dashboard/events/:id" element={<UserEvents />} />
-          <Route path="/dashboard/scheduler/:id" element={<Scheduler />} />
-          <Route path="/dashboard/task/:id" element={<Kanban />} />
-          <Route path="/dashboard/messages/:id" element={<UserMessages />} />
-          <Route path="/dashboard/profile/:id" element={<UserProfile />} />
-        </Route>
-        <Route path="/create-event" element={<CreateEvent />} />
-
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
 
       {!pathname.includes("/signin") &&
