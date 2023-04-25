@@ -7,6 +7,8 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
   const [active, setActive] = useState("");
   const navigate = useNavigate();
 
+  const userData = JSON.parse(localStorage.getItem("user"));
+
   const sideItems = [
     {
       text: "Home",

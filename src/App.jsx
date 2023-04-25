@@ -18,6 +18,7 @@ import {
   UserMessages,
   Scheduler,
   Kanban,
+  Error,
 } from "./pages";
 import { useEffect } from "react";
 
@@ -47,19 +48,34 @@ function App() {
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<College />} />
 
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
           <>
             <Route element={<Layout />}>
-              <Route path="/dashboard" element={<User />} />
-              <Route path="/dashboard/events" element={<UserEvents />} />
-              <Route path="/dashboard/scheduler" element={<Scheduler />} />
-              <Route path="/dashboard/task" element={<Kanban />} />
-              <Route path="/dashboard/messages" element={<UserMessages />} />
-              <Route path="/dashboard/profile" element={<UserProfile />} />
+              <Route path="/dashboard/:id" element={<User />} />
+              <Route path="/dashboard/events/:id" element={<UserEvents />} />
+              <Route path="/dashboard/scheduler/:id" element={<Scheduler />} />
+              <Route path="/dashboard/task/:id" element={<Kanban />} />
+              <Route
+                path="/dashboard/messages/:id"
+                element={<UserMessages />}
+              />
+              <Route path="/dashboard/profile/:id" element={<UserProfile />} />
             </Route>
             <Route path="/create-event" element={<CreateEvent />} />
           </>
-        )}
+        )} */}
+
+        <Route element={<Layout />}>
+          <Route path="/dashboard/:id" element={<User />} />
+          <Route path="/dashboard/events/:id" element={<UserEvents />} />
+          <Route path="/dashboard/scheduler/:id" element={<Scheduler />} />
+          <Route path="/dashboard/task/:id" element={<Kanban />} />
+          <Route path="/dashboard/messages/:id" element={<UserMessages />} />
+          <Route path="/dashboard/profile/:id" element={<UserProfile />} />
+        </Route>
+        <Route path="/create-event" element={<CreateEvent />} />
+
+        <Route path="*" element={<Error />} />
       </Routes>
 
       {!pathname.includes("/signin") &&

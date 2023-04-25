@@ -26,6 +26,8 @@ import college1 from '../assets/img/college1.png';
 import college2 from '../assets/img/college2.png';
 import college3 from '../assets/img/college3.png';
 import event from '../assets/img/event.png';
+import error from '../assets/img/error.svg';
+import events_dashboard from '../assets/img/events_dashboard.svg';
 
 import facebook from '../assets/social/Facebook.svg';
 import twitter from '../assets/social/Twitter.svg';
@@ -68,5 +70,7 @@ export default {
     college1,
     college2,
     college3,
-    event
+    event,
+    error,
+    events_dashboard
 };

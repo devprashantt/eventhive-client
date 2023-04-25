@@ -37,7 +37,7 @@ export default function WeeklyRevenue(props) {
       <Flex align="center" w="100%" px="15px" py="10px">
         <Text
           me="auto"
-          color={textColor}
+          color="#131315"
           fontSize="xl"
           fontWeight="700"
           lineHeight="100%"
@@ -57,7 +57,7 @@ export default function WeeklyRevenue(props) {
           borderRadius="10px"
           {...rest}
         >
-          <Icon as={MdBarChart} color={iconColor} w="24px" h="24px" />
+          <Icon as={MdBarChart} color="#131315" w="24px" h="24px" />
         </Button>
       </Flex>
 

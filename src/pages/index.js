@@ -18,6 +18,7 @@ import UserProfile from './dashboard/Profile';
 import User from './dashboard/User';
 import Scheduler from './dashboard/Scheduler';
 import Kanban from './dashboard/Kanban/Kanban';
+import Error from './error/Error';
 
 
-export { Signin, Signup, Home, CreateEvent, UserProfile, Event, Events, Colleges, College, Layout, UserMessages, UserEvents, User, Scheduler, Kanban };
+export { Signin, Signup, Home, CreateEvent, UserProfile, Event, Events, Colleges, College, Layout, UserMessages, UserEvents, User, Scheduler, Kanban, Error };

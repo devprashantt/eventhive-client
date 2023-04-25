@@ -47,7 +47,7 @@ const Events = () => {
           style={{
             position: "absolute",
             zIndex: "-1",
-            left: "15%",
+            right: "25%",
             width: "40rem",
             height: "40rem",
             backgroundImage:

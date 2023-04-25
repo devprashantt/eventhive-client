@@ -61,7 +61,7 @@ const Navbar = ({ isLoggedIn }) => {
             <div className="navigation__profile" ref={dropdownRef}>
               <img
                 className="navigation__profile__image"
-                src={images.google}
+                src={images.profile}
                 alt="Profile image"
                 onClick={toggleDropdown}
                 style={{ cursor: "pointer" }}
@@ -76,7 +76,7 @@ const Navbar = ({ isLoggedIn }) => {
                 >
                   <div role="none">
                     <Link
-                      to="/dashboard"
+                      to={`/dashboard/${userData._id}`}
                       className="navigation__profile__options__item"
                       role="menuitem"
                     >

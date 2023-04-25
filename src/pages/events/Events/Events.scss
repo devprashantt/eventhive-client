@@ -9,11 +9,12 @@
     gap: 20px;
 
     &__header {
-        width: 100%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: row;
         align-items: center;
-        margin-bottom: 1rem;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem;
 
         &__name {
         }
@@ -39,14 +40,6 @@
     }
 
     &__container {
-        // display: flex;
-        // flex-wrap: wrap;
-        // justify-content: space-between;
-        // align-items: center;
-
-        // width: 100%;
-        // gap: 20px;
-
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-gap: 20px;

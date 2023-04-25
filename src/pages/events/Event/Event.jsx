@@ -44,7 +44,7 @@ const Event = () => {
               {event.name}
             </div>
             <div className="register__header__detail__content__college">
-              {/* {college.name} */}
+              {college.name}
             </div>
             <div className="register__header__detail__content__description">
               {event.description}
