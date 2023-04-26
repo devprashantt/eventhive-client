@@ -12,6 +12,7 @@ function Home() {
   return (
     <div className="home">
       <Header />
+
       <DropdownContainer />
       <EventContainer />
 

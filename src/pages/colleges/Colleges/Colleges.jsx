@@ -42,6 +42,7 @@ const Colleges = () => {
           justifyContent: "center",
           alignItems: "center",
           gap: "20px",
+          width: "100%",
         }}
       >
         <div
@@ -65,22 +66,38 @@ const Colleges = () => {
         </div>
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridGap: "20px",
             width: "100%",
-            gap: "20px",
           }}
         >
-          <div style={{}}></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div
+            style={{
+              width: "100%",
+              clipPath: "circle(50.0% at 50% 50%)",
+              height: "300px",
+              background: `url(${imgArray[0]})`,
+            }}
+          >
+            hy
+          </div>
+          <div
+            style={{
+              width: "100%",
+              clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)",
+              height: "300px",
+              background: `url(${imgArray[1]})`,
+            }}
+          ></div>
+          <div
+            style={{
+              width: "100%",
+              clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
+              height: "300px",
+              background: `url(${imgArray[2]})`,
+            }}
+          ></div>
         </div>
       </div>
       <div className="colleges__header">

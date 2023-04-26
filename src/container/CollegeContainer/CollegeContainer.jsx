@@ -57,9 +57,9 @@ const CollegeContainer = () => {
         </div>
       </div>
       <div className="college__container__body">
-        <div className="college__container__body__list">
+        <div>
           {filteredColleges.length > 0 ? (
-            <>
+            <div className="college__container__body__list">
               {filteredColleges.slice(0, 6).map((college) => (
                 <Link key={college._id} to={`/colleges/${college._id}`}>
                   <CollegeCard
@@ -70,7 +70,7 @@ const CollegeContainer = () => {
                   />
                 </Link>
               ))}
-            </>
+            </div>
           ) : (
             <div className="college__container__body__list__empty">
               <img src={images.dummy} alt="No college found" />

@@ -55,9 +55,9 @@ const EventContainer = () => {
           )}
         </div>
       </div>
-      <div className="event__list">
+      <div>
         {filteredEvents.length > 0 ? (
-          <>
+          <div className="event__list">
             {filteredEvents.slice(0, 6).map((event) => (
               <Link key={event._id} to={`/events/${event._id}`}>
                 <EventCard
@@ -71,7 +71,7 @@ const EventContainer = () => {
                 />
               </Link>
             ))}
-          </>
+          </div>
         ) : (
           <div className="event__list__empty">
             <img src={images.dummy} alt="No events found" />
