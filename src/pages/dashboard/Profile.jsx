@@ -1,22 +1,45 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const UserProfile = () => {
-  const navigate = useNavigate();
+axios.defaults.withCredentials = true;
+let firstRender = true;
 
-  const handleLogout = () => {
-    localStorage.clear();
-    console.log("Navigating to main page...");
-    navigate("/");
+const Profile = () => {
+  const [user, setUser] = useState(null);
+
+  const refreshToken = async () => {
+    const res = await axios
+      .get("http://localhost:3000/users/refresh", {
+        withCredentials: true,
+      })
+      .catch((err) => console.log(err));
+
+    const data = await res.data;
+    return data;
   };
 
-  return (
-    <div>
-      <h1>Profile</h1>
-      <p>Profile page</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
-  );
+  const sendRequest = async () => {
+    const res = await axios
+      .get("http://localhost:3000/users/user", {
+        withCredentials: true,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
+
+  useEffect(() => {
+    if (firstRender) {
+      firstRender = false;
+      sendRequest().then((data) => setUser(data.user));
+    }
+    let interval = setInterval(() => {
+      refreshToken().then((data) => setUser(data.user));
+    }, 1000 * 29);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <div>{user && <h1>{user.name}</h1>}</div>;
 };
 
-export default UserProfile;
+export default Profile;

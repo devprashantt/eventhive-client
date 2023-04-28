@@ -7,30 +7,35 @@ import { Input } from "../../../components";
 import { images } from "../../../constants";
 
 function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const history = useNavigate();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    setInputs((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const sendRequest = async () => {
+    const res = await axios
+      .post("http://localhost:3000/auth/signup", {
+        name: inputs.name,
+        email: inputs.email,
+        password: inputs.password,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:3000/auth/signup", {
-        name,
-        email,
-        password,
-      });
-      const token = res.data.token;
-      const user = res.data.newUser;
-      console.log(user);
-      localStorage.setItem("token", token); // store token in local storage
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/"); // redirect to home page
-    } catch (err) {
-      console.error(err);
-      setError("Could not create account");
-    }
+    sendRequest().then(() => history("/signin"));
   };
 
   return (
@@ -58,22 +63,25 @@ function Signup() {
               type="text"
               placeholder="Enter your name"
               label="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
+              value={inputs.name}
+              onChange={handleChange}
             />
             <Input
               type="email"
               placeholder="Enter your email"
               label="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={inputs.email}
+              onChange={handleChange}
             />
             <Input
               type="password"
               placeholder="Enter your password"
               label="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={inputs.password}
+              onChange={handleChange}
             />
             <button type="submit">Signup</button>
           </form>

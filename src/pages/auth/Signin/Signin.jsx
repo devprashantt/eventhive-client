@@ -1,36 +1,46 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Signin.scss";
 import { Input } from "../../../components";
 import { images } from "../../../constants";
+import { authActions } from "../../../store";
 
 const Signin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [inputs, setInputs] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const sendRequest = async (e) => {
+    const res = await axios
+      .post("http://localhost:3000/auth/signin", {
+        email: inputs.email,
+        password: inputs.password,
+      })
+      .catch((err) => setError("Invalid email or password"));
+
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:3000/auth/signin", {
-        email,
-        password,
-      });
 
-      const token = res.data.token;
-      const user = res.data.existingUser;
-
-      localStorage.setItem("token", token); // store token in local storage
-      localStorage.setItem("user", JSON.stringify(user)); // store user in local storage
-
-      navigate("/"); // redirect to home page
-    } catch (err) {
-      console.error(err);
-      setError("Invalid email or password");
-    }
+    sendRequest()
+      .then(() => dispatch(authActions.login()))
+      .then(() => navigate("/"));
   };
 
   return (
@@ -47,15 +57,17 @@ const Signin = () => {
               type="email"
               placeholder="Enter your email"
               label="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={inputs.email}
+              onChange={handleChange}
             />
             <Input
               type="password"
               placeholder="Enter your password"
               label="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={inputs.password}
+              onChange={handleChange}
             />
             <button type="submit">Signin</button>
           </form>

@@ -1,4 +1,6 @@
-import { Route, Routes, useLocation, BrowserRouter } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { DataProvider } from "./context/DataProvider";
 import { Navbar, Footer } from "./components";
@@ -19,11 +21,12 @@ import {
   Scheduler,
   Error,
 } from "./pages";
-import { useEffect } from "react";
 
 function App() {
-  let isLoggedIn = localStorage.getItem("token") !== null;
   const { pathname } = useLocation();
+
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  console.log(isLoggedIn);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,7 +36,7 @@ function App() {
     <DataProvider>
       {!pathname.includes("/signin") &&
         !pathname.includes("/signup") &&
-        !pathname.includes("/dashboard") && <Navbar isLoggedIn={isLoggedIn} />}
+        !pathname.includes("/dashboard") && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -50,21 +53,18 @@ function App() {
         {isLoggedIn && (
           <>
             <Route element={<Layout />}>
-              <Route path="/dashboard/:id" element={<User />} />
-              <Route path="/dashboard/events/:id" element={<UserEvents />} />
-              <Route path="/dashboard/scheduler/:id" element={<Scheduler />} />
-              <Route path="/dashboard/task/:id" element={<Scheduler />} />
-              <Route
-                path="/dashboard/messages/:id"
-                element={<UserMessages />}
-              />
-              <Route path="/dashboard/profile/:id" element={<UserProfile />} />
+              <Route path="/dashboard" element={<User />} />
+              <Route path="/dashboard/events" element={<UserEvents />} />
+              <Route path="/dashboard/scheduler" element={<Scheduler />} />
+              <Route path="/dashboard/task" element={<Scheduler />} />
+              <Route path="/dashboard/messages" element={<UserMessages />} />
+              <Route path="/dashboard/profile" element={<UserProfile />} />
             </Route>
             <Route path="/create-event" element={<CreateEvent />} />
           </>
         )}
 
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
 
       {!pathname.includes("/signin") &&

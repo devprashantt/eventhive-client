@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+
+import { authActions } from "./../../store";
+
+axios.defaults.withCredentials = true;
 
 import "./Navbar.scss";
 import { images } from "../../constants";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const navigate = useNavigate();
 
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -21,10 +27,18 @@ const Navbar = ({ isLoggedIn }) => {
     }
   };
 
+  const sendLogoutReq = async () => {
+    const res = await axios.post("http://localhost:3000/auth/logout", null, {
+      withCredentials: true,
+    });
+    if (res.status == 200) {
+      return res;
+    }
+    return new Error("Unable to Logout. Please try again");
+  };
+
   const handleLogout = () => {
-    localStorage.clear();
-    isLoggedIn = false;
-    navigate("/");
+    sendLogoutReq().then(() => dispatch(authActions.logout()));
   };
 
   useEffect(() => {
@@ -76,7 +90,7 @@ const Navbar = ({ isLoggedIn }) => {
                 >
                   <div role="none">
                     <Link
-                      to={`/dashboard/${userData._id}`}
+                      to={"/dashboard"}
                       className="navigation__profile__options__item"
                       role="menuitem"
                     >

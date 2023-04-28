@@ -29,8 +29,12 @@ const UserEvents = () => {
           style={{
             width: "50%",
             position: "absolute",
-            padding: "2rem",
+            padding: "0 2rem",
             color: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "start",
           }}
         >
           <h1>Discover and experience extraordinary Events</h1>

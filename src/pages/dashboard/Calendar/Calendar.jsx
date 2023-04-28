@@ -6,7 +6,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 
 import "./Calendar.scss";
 import useCalendar from "../../../store/Calendar";
-import { createEventId } from "../../../variables";
+import { createEventId } from "../../../constants/calendar";
 
 const Calendar = () => {
   const { currentEvents, setCurrentEvents } = useCalendar();

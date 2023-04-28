@@ -9,7 +9,7 @@ import Card from "../../../components/Card/Card";
 import {
   barChartDataDailyTraffic,
   barChartOptionsDailyTraffic,
-} from "../../../variables/charts";
+} from "../../../constants/charts";
 
 // Assets
 import { RiArrowUpSFill } from "react-icons/ri";
