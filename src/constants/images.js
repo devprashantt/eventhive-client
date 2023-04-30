@@ -17,6 +17,8 @@ import plus from '../assets/icons/Phosphor icons/Plus.svg';
 import plusprimary from '../assets/icons/Phosphor icons/PlusPrimary.svg';
 import reset from '../assets/icons/Phosphor icons/Reset.svg';
 import MapPin from '../assets/icons/Phosphor icons/MapPin.svg';
+import menu from '../assets/icons/Phosphor icons/Menu.svg';
+
 
 import signup_image from '../assets/img/signup-image.png';
 import signin_image from '../assets/img/signin-image.png';
@@ -72,5 +74,6 @@ export default {
     college3,
     event,
     error,
-    events_dashboard
+    events_dashboard,
+    menu,
 };

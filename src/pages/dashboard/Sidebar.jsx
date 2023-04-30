@@ -7,8 +7,6 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
   const [active, setActive] = useState("");
   const navigate = useNavigate();
 
-  const userData = JSON.parse(localStorage.getItem("user"));
-
   const sideItems = [
     {
       text: "Home",
@@ -24,7 +22,7 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
     },
     {
       text: "Task",
-      path: "/dashboard/task",
+      path: "/dashboard/tasks",
     },
     {
       text: "Messages",
@@ -101,9 +99,6 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
             }}
             onClick={() => navigate(item.path)}
           >
-            <div className="sidebar__body__item__icon">
-              <i className="fas fa-home">Icon</i>
-            </div>
             <div
               className={`sidebar__body__item__text ${
                 active === item.path.substring(1) ? "active" : ""

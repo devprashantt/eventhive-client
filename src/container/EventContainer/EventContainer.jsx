@@ -63,8 +63,8 @@ const EventContainer = () => {
                 <EventCard
                   key={event._id}
                   name={event.name}
-                  date={formatDate(event.date)}
-                  time={event.time}
+                  date={event.start_date}
+                  time={event.start_time}
                   location={event.location}
                   status={event.status}
                   img={event.banner}

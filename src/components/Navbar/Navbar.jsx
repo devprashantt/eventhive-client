@@ -12,7 +12,8 @@ import { images } from "../../constants";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef1 = useRef(null);
+  const dropdownRef2 = useRef(null);
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -22,7 +23,12 @@ const Navbar = () => {
   };
 
   const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    if (
+      dropdownRef1.current &&
+      !dropdownRef1.current.contains(event.target) &&
+      dropdownRef2.current &&
+      !dropdownRef2.current.contains(event.target)
+    ) {
       setIsDropdownOpen(false);
     }
   };
@@ -72,7 +78,7 @@ const Navbar = () => {
             <Link to="/create-event" className="navigation__create">
               Create
             </Link>
-            <div className="navigation__profile" ref={dropdownRef}>
+            <div className="navigation__profile" ref={dropdownRef1}>
               <img
                 className="navigation__profile__image"
                 src={images.profile}
@@ -95,6 +101,48 @@ const Navbar = () => {
                       role="menuitem"
                     >
                       Your Profile
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="navigation__profile__options__item"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="navigation__menu" ref={dropdownRef2}>
+              <img src={images.menu} alt="menu" onClick={toggleDropdown} />
+              {isDropdownOpen && (
+                <div
+                  className="navigation__profile__options"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <div role="none">
+                    <Link
+                      to={"/dashboard"}
+                      className="navigation__profile__options__item"
+                      role="menuitem"
+                    >
+                      Your Profile
+                    </Link>
+                    <Link
+                      to={"/colleges"}
+                      className="navigation__profile__options__item"
+                      role="menuitem"
+                    >
+                      Colleges
+                    </Link>
+                    <Link
+                      to={"/events"}
+                      className="navigation__profile__options__item"
+                      role="menuitem"
+                    >
+                      Events
                     </Link>
                     <button
                       onClick={handleLogout}

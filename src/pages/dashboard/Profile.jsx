@@ -25,6 +25,7 @@ const Profile = () => {
       })
       .catch((err) => console.log(err));
     const data = await res.data;
+    console.log(data);
     return data;
   };
 

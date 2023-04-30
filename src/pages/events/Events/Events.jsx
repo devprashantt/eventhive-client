@@ -10,6 +10,8 @@ import { images } from "../../../constants";
 const Events = () => {
   const { events } = useContext(DataContext);
 
+  console.log(events);
+
   const [search, setSearch] = useState("");
   const [filteredEvents, setFilteredEvents] = useState(events);
 
@@ -184,8 +186,8 @@ const Events = () => {
           <Link key={event._id} to={`/events/${event._id}`}>
             <EventCard
               name={event.name}
-              date={formatDate(event.date)}
-              time={event.time}
+              date={event.start_date}
+              time={event.start_time}
               location={event.location}
               img={event.banner}
             />

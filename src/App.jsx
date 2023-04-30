@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 import { DataProvider } from "./context/DataProvider";
 import { Navbar, Footer } from "./components";
@@ -20,17 +21,17 @@ import {
   UserMessages,
   Scheduler,
   Error,
+  Tasks,
 } from "./pages";
 
 function App() {
   const { pathname } = useLocation();
 
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
-  console.log(isLoggedIn);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  console.log("App rendered");
 
   return (
     <DataProvider>
@@ -50,19 +51,16 @@ function App() {
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<College />} />
 
-        {isLoggedIn && (
-          <>
-            <Route element={<Layout />}>
-              <Route path="/dashboard" element={<User />} />
-              <Route path="/dashboard/events" element={<UserEvents />} />
-              <Route path="/dashboard/scheduler" element={<Scheduler />} />
-              <Route path="/dashboard/task" element={<Scheduler />} />
-              <Route path="/dashboard/messages" element={<UserMessages />} />
-              <Route path="/dashboard/profile" element={<UserProfile />} />
-            </Route>
-            <Route path="/create-event" element={<CreateEvent />} />
-          </>
-        )}
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<User />} />
+          <Route path="/dashboard/events" element={<UserEvents />} />
+          <Route path="/dashboard/scheduler" element={<Scheduler />} />
+          <Route path="/dashboard/task" element={<Scheduler />} />
+          <Route path="/dashboard/messages" element={<UserMessages />} />
+          <Route path="/dashboard/profile" element={<UserProfile />} />
+          <Route path="/dashboard/tasks" element={<Tasks />} />
+        </Route>
+        <Route path="/create-event" element={<CreateEvent />} />
 
         <Route path="/*" element={<Error />} />
       </Routes>
