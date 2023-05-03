@@ -1,6 +1,4 @@
-// Chakra imports
 import { Box, Flex, Text, Select, useColorModeValue } from "@chakra-ui/react";
-// Custom components
 import Card from "../../../components/Card/Card";
 import PieChart from "../../../components/Charts/PieChart";
 import { pieChartData, pieChartOptions } from "../../../constants/charts";
@@ -9,7 +7,6 @@ import React from "react";
 export default function Conversion(props) {
   const { ...rest } = props;
 
-  // Chakra Color Mode
   const textColor = useColorModeValue("secondaryGray.900", "white");
 
   return (
@@ -19,9 +16,8 @@ export default function Conversion(props) {
         justifyContent="space-between"
         alignItems="center"
         w="100%"
-        mb="8px"
       >
-        <Text color={textColor} fontSize="md" fontWeight="600" mt="4px">
+        <Text color={textColor} fontSize="md" fontWeight="600">
           Your Pie Chart
         </Text>
       </Flex>
@@ -32,7 +28,7 @@ export default function Conversion(props) {
         chartData={pieChartData}
         chartOptions={pieChartOptions}
       />
-      <Card flexDirection="row" w="100%" p="15px" px="20px" mt="15px" mx="auto">
+      <Card flexDirection="row" w="100%" p="15px" px="20px" mx="auto">
         Information to show
       </Card>
     </Card>

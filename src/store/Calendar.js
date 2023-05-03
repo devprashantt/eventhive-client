@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { INITIAL_EVENTS } from './../constants/calendar'
+import { INITIAL_EVENTS } from '../constants/calendar'
 
 const useCalendar = create((set) => ({
     currentEvents: INITIAL_EVENTS,

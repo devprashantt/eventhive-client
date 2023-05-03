@@ -19,7 +19,9 @@ function CreateEvent() {
 
   useEffect(() => {
     async function fetchColleges() {
-      const response = await axios.get("http://localhost:3000/colleges");
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_HOST}/colleges`
+      );
       setEventData((prevState) => ({
         ...prevState,
         collegeOptions: response.data,
@@ -43,7 +45,9 @@ function CreateEvent() {
     console.log("Event created successfully");
     console.log(data);
 
-    axios.post("http://localhost:3000/events", data).then((response) => {});
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_HOST}/events`, data)
+      .then((response) => {});
   }
 
   function handleChange(event) {

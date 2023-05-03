@@ -25,7 +25,11 @@ import {
 } from "./pages";
 
 function App() {
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  console.log(isLoggedIn);
 
   useEffect(() => {
     window.scrollTo(0, 0);

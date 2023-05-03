@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = "http://localhost:3000/users/user/tasks"
+const baseUrl = `${import.meta.env.VITE_BACKEND_HOST}/users/user/tasks`
 
 const getAllToDo = (setToDo) => {
     axios

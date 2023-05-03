@@ -34,9 +34,13 @@ const Navbar = () => {
   };
 
   const sendLogoutReq = async () => {
-    const res = await axios.post("http://localhost:3000/auth/logout", null, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${import.meta.env.VITE_BACKEND_HOST}/auth/logout`,
+      null,
+      {
+        withCredentials: true,
+      }
+    );
     if (res.status == 200) {
       return res;
     }
@@ -100,7 +104,7 @@ const Navbar = () => {
                       className="navigation__profile__options__item"
                       role="menuitem"
                     >
-                      Your Profile
+                      Dashboard
                     </Link>
                     <button
                       onClick={handleLogout}

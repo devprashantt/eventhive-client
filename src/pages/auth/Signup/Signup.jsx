@@ -23,7 +23,7 @@ function Signup() {
   };
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:3000/auth/signup", {
+      .post(`${import.meta.env.VITE_BACKEND_HOST}/auth/signup`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,

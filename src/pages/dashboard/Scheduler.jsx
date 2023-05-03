@@ -5,7 +5,7 @@ const Scheduler = () => {
   return (
     <div
       style={{
-        padding: "1rem 1rem",
+        padding: "1rem",
         borderRadius: "1rem",
       }}
     >

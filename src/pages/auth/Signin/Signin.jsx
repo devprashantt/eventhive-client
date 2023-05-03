@@ -24,7 +24,7 @@ const Signin = () => {
 
   const sendRequest = async (e) => {
     const res = await axios
-      .post("http://localhost:3000/auth/signin", {
+      .post(`${import.meta.env.VITE_BACKEND_HOST}/auth/signin`, {
         email: inputs.email,
         password: inputs.password,
       })

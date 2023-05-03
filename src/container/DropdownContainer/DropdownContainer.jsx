@@ -19,9 +19,9 @@ const DropdownContainer = () => {
       try {
         const [collegesResponse, categoriesResponse, eventsResponse] =
           await Promise.all([
-            axios.get("http://localhost:3000/colleges"),
-            axios.get("http://localhost:3000/categories"),
-            axios.get("http://localhost:3000/events"),
+            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/colleges`),
+            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/categories`),
+            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/events`),
           ]);
         setColleges(collegesResponse.data);
         setCategories(categoriesResponse.data);

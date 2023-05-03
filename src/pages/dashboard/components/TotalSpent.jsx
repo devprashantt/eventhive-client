@@ -1,12 +1,9 @@
 // Chakra imports
 import { Box, Flex, Icon, Text } from "@chakra-ui/react";
-// Custom components
 import Card from "../../../components/Card/Card";
 import LineChart from "./../../../components/Charts/LineChart";
 import React from "react";
 import { IoCheckmarkCircle } from "react-icons/io5";
-import { MdBarChart, MdOutlineCalendarToday } from "react-icons/md";
-// Assets
 import { RiArrowUpSFill } from "react-icons/ri";
 import {
   lineChartDataTotalSpent,
@@ -27,7 +24,7 @@ export default function TotalSpent(props) {
       {...rest}
     >
       <Flex w="100%" flexDirection={{ base: "column", lg: "row" }}>
-        <Flex flexDirection="column" me="20px" mt="28px">
+        <Flex flexDirection="column" me="20px" justifyContent="center">
           <Text
             color="black"
             fontSize="34px"
@@ -38,13 +35,7 @@ export default function TotalSpent(props) {
             $37.5K
           </Text>
           <Flex align="center" mb="20px">
-            <Text
-              color="gray"
-              fontSize="sm"
-              fontWeight="500"
-              mt="4px"
-              me="12px"
-            >
+            <Text color="gray" fontSize="sm" fontWeight="500" me="12px">
               Total Spent
             </Text>
             <Flex align="center">
@@ -62,7 +53,7 @@ export default function TotalSpent(props) {
             </Text>
           </Flex>
         </Flex>
-        <Box minH="260px" minW="80%" mt="auto">
+        <Box minH="260px" width="100%" mt="auto">
           <LineChart
             chartData={lineChartDataTotalSpent}
             chartOptions={lineChartOptionsTotalSpent}
