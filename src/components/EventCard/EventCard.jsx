@@ -12,10 +12,29 @@ const EventCard = ({ name, date, time, location, img, description }) => {
       </div>
       <div className="event__info">
         <h3 className="event__title">{name}</h3>
-        <p className="event__dt">
-          <span className="event__date">{formatDate(date)}</span>
-          <span className="event__time">{time}</span>
-        </p>
+        {description && (
+          <p className="event__description">
+            {description.substring(0, 250)}
+            <span
+              style={{
+                color: "#7848f4",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                alert(description);
+              }}
+            >
+              {"  "}
+              Show all
+            </span>
+          </p>
+        )}
+        {date && (
+          <p className="event__dt">
+            <span className="event__date">{formatDate(date)}</span>
+            <span className="event__time">{time}</span>
+          </p>
+        )}
         <p className="event__location">{location}</p>
       </div>
     </div>

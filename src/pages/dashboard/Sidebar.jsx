@@ -24,10 +24,10 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
       text: "Task",
       path: "/dashboard/tasks",
     },
-    {
-      text: "Messages",
-      path: "/dashboard/messages",
-    },
+    // {
+    //   text: "Messages",
+    //   path: "/dashboard/messages",
+    // },
     {
       text: "Profile",
       path: "/dashboard/profile",
@@ -43,7 +43,7 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
       className="sidebar"
       style={{
         height: "100%",
-        width: "18%",
+        width: "15%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",

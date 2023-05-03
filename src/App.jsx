@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import { DataProvider } from "./context/DataProvider";
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer, Payment, Success, Cancel } from "./components";
 import {
   Home,
   Signin,
@@ -51,20 +51,26 @@ function App() {
 
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<Event />} />
+        <Route path="/events/:id/payment/success" element={<Success />} />
+        <Route path="/events/:id/payment/cancel" element={<Cancel />} />
 
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<College />} />
 
-        <Route element={<Layout />}>
-          <Route path="/dashboard" element={<User />} />
-          <Route path="/dashboard/events" element={<UserEvents />} />
-          <Route path="/dashboard/scheduler" element={<Scheduler />} />
-          <Route path="/dashboard/task" element={<Scheduler />} />
-          <Route path="/dashboard/messages" element={<UserMessages />} />
-          <Route path="/dashboard/profile" element={<UserProfile />} />
-          <Route path="/dashboard/tasks" element={<Tasks />} />
-        </Route>
-        <Route path="/create-event" element={<CreateEvent />} />
+        {isLoggedIn && (
+          <>
+            <Route element={<Layout />}>
+              <Route path="/dashboard" element={<User />} />
+              <Route path="/dashboard/events" element={<UserEvents />} />
+              <Route path="/dashboard/scheduler" element={<Scheduler />} />
+              <Route path="/dashboard/task" element={<Scheduler />} />
+              <Route path="/dashboard/messages" element={<UserMessages />} />
+              <Route path="/dashboard/profile" element={<UserProfile />} />
+              <Route path="/dashboard/tasks" element={<Tasks />} />
+            </Route>
+            <Route path="/create-event" element={<CreateEvent />} />
+          </>
+        )}
 
         <Route path="/*" element={<Error />} />
       </Routes>

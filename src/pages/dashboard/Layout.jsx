@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
           position: "relative",
           height: "100%",
           width: "100%",
-          marginLeft: "18%",
+          marginLeft: "15%",
           marginTop: "5rem",
           display: "flex",
           flexDirection: "column",
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
             position: "fixed",
             top: 0,
             right: 0,
-            left: "18%",
+            left: "15%",
             zIndex: 100,
           }}
         >

@@ -96,7 +96,7 @@ const Profile = () => {
             >
               <p>Change image</p>
             </div>
-            {/* <div
+            <div
               style={{
                 position: "absolute",
                 top: "1rem",
@@ -135,32 +135,10 @@ const Profile = () => {
                 </p>
                 <p>{user.email}</p>
               </div>
-            </div> */}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <input type="text" placeholder="Name" />
+            </div>
           </div>
         </div>
       )}
-
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: "white",
-          borderRadius: "1rem",
-          padding: "1rem",
-        }}
-      >
-        <h1>Events</h1>
-      </div>
     </div>
   );
 };

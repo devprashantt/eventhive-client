@@ -82,7 +82,6 @@
         gap: 2rem;
 
         &__title {
-            font-family: "Product Sans";
             font-style: normal;
             font-weight: 700;
             font-size: 36px;
@@ -94,13 +93,12 @@
         }
 
         &__list {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            justify-items: center;
             align-items: center;
-            justify-content: flex-start;
-            gap: 2rem;
-            flex-wrap: wrap;
+            width: 100%;
         }
     }
 }

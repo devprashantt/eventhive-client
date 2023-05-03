@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { images } from "../../constants";
+import { EventContainer } from "../../container";
 
 const UserEvents = () => {
   return (
@@ -82,33 +83,7 @@ const UserEvents = () => {
           alt=""
         />
       </div>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <span
-            style={{
-              color: "#7848F4",
-            }}
-          >
-            Events
-          </span>{" "}
-          Participated
-        </h1>
-        <div>Icons</div>
-      </div>
-      <div></div>
-      <div></div>
+      <EventContainer />
     </div>
   );
 };

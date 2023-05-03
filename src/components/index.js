@@ -9,5 +9,8 @@ import Footer from './Footer/Footer';
 import Register from './Register/Register';
 import Map from './Map/Map';
 import Advertisement from './Advertisement/Advertisement';
+import Payment from './Payment/Payment';
+import Success from './Payment/Success';
+import Cancel from './Payment/Cancel';
 
-export { Input, Map, Advertisement, Navbar, Register, EventCard, Dropdown, Spinner, CollegeCard, Header, Footer };
+export { Input, Map, Advertisement, Navbar, Register, EventCard, Dropdown, Spinner, CollegeCard, Header, Footer, Payment, Success, Cancel };

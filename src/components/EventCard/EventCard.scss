@@ -3,28 +3,24 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    min-height: 30rem;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition: all 0.3s ease-in-out;
 
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.26);
     }
 
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-
     .event__image {
-        height: 200px;
         img {
+            height: 15rem;
             width: 100%;
-            height: 100%;
-            min-width: 300px;
-            border-radius: 10px 10px 0px 0px;
+            border-radius: 10px 10px 0 0;
             object-fit: cover;
         }
     }
@@ -34,17 +30,15 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-
         width: 100%;
-        padding: 1rem;
+        padding: 0 1rem;
 
         .event__title {
-            font-family: "Product Sans";
             font-style: normal;
             font-weight: 600;
             font-size: 20px;
-            line-height: 19px;
             color: #131315;
+            margin-bottom: 0.5rem;
         }
 
         .event__dt {
@@ -53,22 +47,21 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 0.5rem;
 
             .event__date {
-                font-family: "Product Sans";
                 font-style: normal;
                 font-weight: 700;
                 font-size: 18px;
-                line-height: 15px;
                 color: #7848f4;
+                margin-right: 1rem;
             }
 
             .event__time {
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
-                line-height: 15px;
-                padding: 0.8rem;
+                padding: 0.5rem;
                 color: #fff;
                 border-radius: 5px;
                 background: #7848f4;
@@ -78,7 +71,6 @@
         .event__location {
             font-size: 1.2rem;
             font-weight: 500;
-            margin-bottom: 1rem;
             color: #131315;
         }
     }

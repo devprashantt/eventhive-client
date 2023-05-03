@@ -2,6 +2,7 @@ import logo from '../assets/logo.svg';
 import logo_icon from '../assets/logo_icon.png';
 import dummy from '../assets/dummy.svg';
 import profile from '../assets/profile.svg';
+import map from '../assets/map.svg';
 
 import image1 from '../assets/events/image1.svg';
 import image2 from '../assets/events/image2.svg';
@@ -76,4 +77,5 @@ export default {
     error,
     events_dashboard,
     menu,
+    map
 };
