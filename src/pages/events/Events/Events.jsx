@@ -182,7 +182,7 @@ const Events = () => {
         </div>
       </div>
       <div className="events__container">
-        {filteredEvents.map((event) => (
+        {filteredEvents.reverse().map((event) => (
           <Link key={event._id} to={`/events/${event._id}`}>
             <EventCard
               name={event.name}

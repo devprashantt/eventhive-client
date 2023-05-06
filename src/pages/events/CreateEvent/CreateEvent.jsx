@@ -5,6 +5,7 @@ import "./CreateEvent.scss";
 import { images } from "./../../../constants";
 
 function CreateEvent() {
+  const [active, setActive] = useState(false);
   const [eventData, setEventData] = useState({
     name: "",
     description: "",
@@ -31,6 +32,7 @@ function CreateEvent() {
   }, []);
 
   async function handleSubmit(event) {
+    setActive(true);
     event.preventDefault();
     const data = {
       name: eventData.name,
@@ -47,15 +49,17 @@ function CreateEvent() {
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_HOST}/events`, data)
-      .then((response) => {});
+      .then((response) => {
+        setActive(false);
+        console.log(response);
+        window.location.href = "/events";
+      });
   }
 
   function handleChange(event) {
     const { name, value } = event.target;
     setEventData((prevState) => ({ ...prevState, [name]: value }));
   }
-
-  console.log(eventData);
 
   return (
     <div className="create__event">
@@ -244,7 +248,7 @@ function CreateEvent() {
           </label>
         </div>
 
-        <button type="submit">Create Event</button>
+        <button type="submit">{active ? "Creating..." : "Create Event"}</button>
       </form>
     </div>
   );

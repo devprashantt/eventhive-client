@@ -67,6 +67,7 @@ const CollegeContainer = () => {
                     name={college.name}
                     image={college.imgUrl}
                     location={college.location}
+                    description={college.description.substring(0, 100) + "..."}
                   />
                 </Link>
               ))}
@@ -74,7 +75,7 @@ const CollegeContainer = () => {
           ) : (
             <div className="college__container__body__list__empty">
               <img src={images.dummy} alt="No college found" />
-              <p>No college found</p>
+              <p>Loading colleges...</p>
             </div>
           )}
         </div>

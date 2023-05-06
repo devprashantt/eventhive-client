@@ -6,7 +6,7 @@ import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import "./Event.scss";
 import { DataContext } from "../../../context/DataContext";
 import { images } from "../../../constants";
-import { EventCard, Register, Map, Payment } from "../../../components";
+import { EventCard, Register, Payment } from "../../../components";
 import { EventContainer } from "../../../container";
 import { formatDate } from "../../../utils";
 
@@ -18,11 +18,14 @@ const Event = () => {
   const event = events.find((event) => event._id === id);
   const college = colleges.find((college) => college._id === event.colleges[0]);
 
-  console.log(events);
-  console.log(college);
-
   if (!event) {
     return <div>Event not found</div>;
+  }
+
+  const maxLength = 40;
+  let truncatedString = event.name.substring(0, maxLength);
+  if (event.name.length > maxLength) {
+    truncatedString += "...";
   }
 
   return (
@@ -43,7 +46,7 @@ const Event = () => {
               </div>
             </Link>
             <div className="register__header__detail__content__title">
-              {event.name}
+              {truncatedString}
             </div>
             <div className="register__header__detail__content__college">
               {college.name}
@@ -93,6 +96,16 @@ const Event = () => {
               color: "gray",
             }}
           >
+            <p
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "600",
+                margin: "0 0 1rem 0",
+                color: "#7848f4",
+              }}
+            >
+              {event.name}
+            </p>
             {event.description}
           </p>
           <div

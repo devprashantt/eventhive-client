@@ -7,6 +7,7 @@ import { Input } from "../../../components";
 import { images } from "../../../constants";
 
 function Signup() {
+  const [loading, setLoading] = useState(false);
   const history = useNavigate();
   const [error, setError] = useState("");
   const [inputs, setInputs] = useState({
@@ -22,6 +23,7 @@ function Signup() {
     }));
   };
   const sendRequest = async () => {
+    setLoading(true);
     const res = await axios
       .post(`${import.meta.env.VITE_BACKEND_HOST}/auth/signup`, {
         name: inputs.name,
@@ -30,6 +32,7 @@ function Signup() {
       })
       .catch((err) => console.log(err));
     const data = await res.data;
+    setLoading(false);
     return data;
   };
 
@@ -83,7 +86,7 @@ function Signup() {
               value={inputs.password}
               onChange={handleChange}
             />
-            <button type="submit">Signup</button>
+            <button type="submit">{loading ? "Loading..." : "Signup"}</button>
           </form>
           <p>Or</p>
           <Link to="/">

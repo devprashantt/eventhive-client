@@ -58,24 +58,27 @@ const EventContainer = () => {
       <div>
         {filteredEvents.length > 0 ? (
           <div className="event__list">
-            {filteredEvents.slice(0, 6).map((event) => (
-              <Link key={event._id} to={`/events/${event._id}`}>
-                <EventCard
-                  key={event._id}
-                  name={event.name}
-                  date={event.start_date}
-                  time={event.start_time}
-                  location={event.location}
-                  status={event.status}
-                  img={event.banner}
-                />
-              </Link>
-            ))}
+            {filteredEvents
+              .slice(0, 6)
+              .reverse()
+              .map((event) => (
+                <Link key={event._id} to={`/events/${event._id}`}>
+                  <EventCard
+                    key={event._id}
+                    name={event.name}
+                    date={event.start_date}
+                    time={event.start_time}
+                    location={event.location}
+                    status={event.status}
+                    img={event.banner}
+                  />
+                </Link>
+              ))}
           </div>
         ) : (
           <div className="event__list__empty">
             <img src={images.dummy} alt="No events found" />
-            <p>No events found</p>
+            <p>Searching events....</p>
           </div>
         )}
       </div>

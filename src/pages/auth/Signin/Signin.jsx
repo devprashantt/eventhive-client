@@ -9,6 +9,7 @@ import { images } from "../../../constants";
 import { authActions } from "../../../store";
 
 const Signin = () => {
+  const [loading, setLoading] = useState(false);
   const [inputs, setInputs] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -23,6 +24,7 @@ const Signin = () => {
   };
 
   const sendRequest = async (e) => {
+    setLoading(true);
     const res = await axios
       .post(`${import.meta.env.VITE_BACKEND_HOST}/auth/signin`, {
         email: inputs.email,
@@ -31,7 +33,7 @@ const Signin = () => {
       .catch((err) => setError("Invalid email or password"));
 
     const data = await res.data;
-    console.log(data);
+    setLoading(false);
     return data;
   };
 
@@ -69,7 +71,9 @@ const Signin = () => {
               value={inputs.password}
               onChange={handleChange}
             />
-            <button type="submit">Signin</button>
+            <button type="submit">
+              {loading ? "Signing in..." : "Signin"}
+            </button>
           </form>
           <p>Or</p>
           <Link to="/">
@@ -86,7 +90,12 @@ const Signin = () => {
         <div className="content">
           <h1>Welcome back</h1>
           <p>To keep connected with us provide us with your information</p>
-          <Link to="/signup">
+          <Link
+            to="/signup"
+            style={{
+              textDecoration: "none",
+            }}
+          >
             <button>Signup</button>
           </Link>
         </div>
