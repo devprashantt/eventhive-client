@@ -15,14 +15,18 @@ body {
     background-color: #f8f8fa;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     outline: none;
     border: none;
+    text-decoration: none;
     cursor: pointer !important;
 }
 
 input {
-    font-family: "Product Sans";
     font-size: 12px;
     line-height: 15px;
 
