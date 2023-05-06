@@ -130,6 +130,7 @@ const Colleges = () => {
               name={college.name}
               location={college.location}
               image={college.imgUrl}
+              description={college.description.substring(0, 100) + "..."}
             />
           </Link>
         ))}
