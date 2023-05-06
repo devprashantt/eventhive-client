@@ -51,8 +51,7 @@ function CreateEvent() {
       .post(`${import.meta.env.VITE_BACKEND_HOST}/events`, data)
       .then((response) => {
         setActive(false);
-        console.log(response);
-        window.location.href = "/events";
+        window.location.href = "/";
       });
   }
 
