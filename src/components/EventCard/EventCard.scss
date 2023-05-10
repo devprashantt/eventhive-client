@@ -33,6 +33,14 @@
         width: 100%;
         padding: 0 1rem;
 
+        .event__description {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #131315;
+            margin-bottom: 0.5rem;
+        }
+
         .event__title {
             font-style: normal;
             font-weight: 600;

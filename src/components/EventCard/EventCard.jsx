@@ -19,7 +19,7 @@ const EventCard = ({ name, date, time, location, img, description }) => {
         <h3 className="event__title">{truncatedString}</h3>
         {description && (
           <p className="event__description">
-            {description.substring(0, 250)}
+            {description.substring(0, 90)}
             <span
               style={{
                 color: "#7848f4",
