@@ -1,26 +1,33 @@
+import axios from 'axios';
+
 const fetchData = async () => {
-    const collegesResponse = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/colleges`);
-    const colleges = await collegesResponse.json();
+    try {
+        const collegesResponse = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/colleges`);
+        const colleges = collegesResponse.data;
 
-    const eventsResponse = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/events`);
-    const events = await eventsResponse.json();
+        const eventsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/events`);
+        const events = eventsResponse.data;
 
-    const organizersResponse = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/organizers`);
-    const organizers = await organizersResponse.json();
+        const organizersResponse = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/organizers`);
+        const organizers = organizersResponse.data;
 
-    const participantsResponse = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/participants`);
-    const participants = await participantsResponse.json();
+        const participantsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/participants`);
+        const participants = participantsResponse.data;
 
-    const categoriesResponse = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/categories`);
-    const categories = await categoriesResponse.json();
+        const categoriesResponse = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/categories`);
+        const categories = categoriesResponse.data;
 
-    return {
-        colleges,
-        events,
-        organizers,
-        participants,
-        categories
-    };
+        return {
+            colleges,
+            events,
+            organizers,
+            participants,
+            categories
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
 };
 
 export default fetchData;
