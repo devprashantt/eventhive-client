@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 import { authActions } from "./../../store";
+import { images } from "../../constants";
 
 axios.defaults.withCredentials = true;
 
 import "./Navbar.scss";
-import { images } from "../../constants";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -89,8 +89,8 @@ const Navbar = () => {
             <div className="navigation__profile" ref={dropdownRef1}>
               <img
                 className="navigation__profile__image"
-                src={images.profile}
-                alt="Profile image"
+                src={images.menu}
+                alt="profile image"
                 onClick={toggleDropdown}
                 style={{ cursor: "pointer" }}
               />
@@ -165,14 +165,14 @@ const Navbar = () => {
             </div>
           </>
         ) : (
-          <>
+          <div className="navigation__auth">
             <Link to="/signin" className="navigation__signin">
               Login
             </Link>
             <Link to="/signup" className="navigation__signup">
               Register
             </Link>
-          </>
+          </div>
         )}
       </div>
     </header>

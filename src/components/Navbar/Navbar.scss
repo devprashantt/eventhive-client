@@ -38,6 +38,10 @@
         justify-content: space-between;
         gap: 1.5rem;
 
+        img {
+            display: none;
+        }
+
         .navigation__create {
             display: flex;
             align-items: center;
@@ -141,13 +145,27 @@
 
 @media screen and (max-width: 768px) {
     .navigation {
+        gap: 1rem;
+        .navigation__logo {
+            width: 8rem;
+        }
         .navigation__menu {
             display: none;
         }
 
         .navigation__right {
-            .navigation__create {
+            .navigation__create,
+            .navigation__profile {
                 display: none;
+            }
+
+            .navigation__auth {
+                font-size: small;
+            }
+
+            img {
+                display: block;
+                cursor: pointer;
             }
 
             .navigation__menu {
@@ -200,10 +218,6 @@
                         }
                     }
                 }
-            }
-
-            .navigation__profile {
-                display: none;
             }
         }
     }
