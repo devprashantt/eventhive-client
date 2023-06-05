@@ -2,6 +2,8 @@ import Signin from "./auth/Signin/Signin";
 import Signup from "./auth/Signup/Signup";
 
 import Home from "./home/Home/Home";
+import Contact from "./contact/Contact";
+import About from "./about/About";
 
 import CreateEvent from "./events/CreateEvent/CreateEvent";
 import Event from "./events/Event/Event";
@@ -23,6 +25,8 @@ export {
     Signin,
     Signup,
     Home,
+    Contact,
+    About,
     CreateEvent,
     UserProfile,
     Event,

@@ -1,8 +1,10 @@
 import logo from '../assets/logo.svg';
 import logo_icon from '../assets/logo_icon.png';
+import vert_icon from '../assets/vert_icon.svg';
 import dummy from '../assets/dummy.svg';
 import profile from '../assets/profile.svg';
 import map from '../assets/map.svg';
+import myself from '../assets/myself.svg';
 
 import image1 from '../assets/events/image1.svg';
 import image2 from '../assets/events/image2.svg';
@@ -37,6 +39,11 @@ import twitter from '../assets/social/Twitter.svg';
 import linkedin from '../assets/social/LinkedIn.svg';
 import whatsapp from '../assets/social/WhatsApp.svg';
 import google from '../assets/social/Google.svg';
+import medium from '../assets/social/Medium.svg';
+import codepen from '../assets/social/Codepen.svg';
+import figma from '../assets/social/Figma.svg';
+import dribble from '../assets/social/Dribble.svg';
+import github from '../assets/social/Github.svg';
 
 import FacebookLogo from '../assets/icons/Phosphor icons/FacebookLogo.png';
 import LinkedinLogo from '../assets/icons/Phosphor icons/LinkedinLogo.png';
@@ -67,6 +74,11 @@ export default {
     FacebookLogo,
     LinkedinLogo,
     InstagramLogo,
+    medium,
+    codepen,
+    figma,
+    github,
+    dribble,
     MapPin,
     profile,
     logo_icon,
@@ -77,5 +89,7 @@ export default {
     error,
     events_dashboard,
     menu,
-    map
+    map,
+    vert_icon,
+    myself
 };

@@ -11,8 +11,12 @@ const Advertisement = () => {
         <img src={images.ad_image} alt="ad_image" />
       </div>
       <div className="ad__text">
-        <h2>Make your own Event </h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <h2>Make your own Event</h2>
+        <p>
+          Unleash your creativity and create unforgettable events that reflect
+          your unique style and objectives. Make your mark in the event world
+          today.
+        </p>
         <Link to="/create-event">
           <button>Create Events</button>
         </Link>

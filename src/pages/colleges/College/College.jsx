@@ -58,24 +58,26 @@ const Event = () => {
         </div>
       </div>
 
-      <div className="college__events">
-        <div className="college__events__title">
-          Upcoming <span>Events</span>
+      {collegeData.events.length !== 0 ? (
+        <div className="college__events">
+          <div className="college__events__title">
+            Upcoming <span>Events</span>
+          </div>
+          <div className="college__events__list">
+            {collegeEvents.reverse().map((event) => (
+              <Link key={event._id} to={`/events/${event._id}`}>
+                <EventCard
+                  name={event.name}
+                  date={event.start_date}
+                  time={event.start_time}
+                  location={event.location}
+                  img={event.banner}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className="college__events__list">
-          {collegeEvents.reverse().map((event) => (
-            <Link key={event._id} to={`/events/${event._id}`}>
-              <EventCard
-                name={event.name}
-                date={event.start_date}
-                time={event.start_time}
-                location={event.location}
-                img={event.banner}
-              />
-            </Link>
-          ))}
-        </div>
-      </div>
+      ) : null}
 
       <div className="college__events">
         <div>

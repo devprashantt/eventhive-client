@@ -8,7 +8,6 @@ import { images } from "../../../constants";
 
 const Colleges = () => {
   const { colleges } = useContext(DataContext);
-  console.log(colleges);
   const [search, setSearch] = useState("");
   const [filteredColleges, setFilteredColleges] = useState(colleges);
 
@@ -79,15 +78,25 @@ const Colleges = () => {
               height: "300px",
               background: `url(${imgArray[0]})`,
             }}
-          >
-            hy
-          </div>
+          ></div>
           <div
             style={{
               width: "100%",
               clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)",
               height: "300px",
-              background: `url(${imgArray[1]})`,
+              background: `url(${imgArray[1]}) center center / cover`,
+            }}
+          ></div>
+          <div
+            style={{
+              position: "absolute",
+              zIndex: "-1",
+              top: "10%",
+              right: "28%",
+              width: "40rem",
+              height: "40rem",
+              backgroundImage:
+                "radial-gradient(circle at center, #7848f4 0%, #7848f4 5%, rgba(120, 120, 120, 0) 40%)",
             }}
           ></div>
           <div

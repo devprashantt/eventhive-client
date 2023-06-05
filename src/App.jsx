@@ -1,12 +1,12 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 
-import { DataProvider } from "./context/DataProvider";
 import { Navbar, Footer, Payment, Success, Cancel } from "./components";
 import {
   Home,
+  Contact,
+  About,
   Signin,
   Signup,
   CreateEvent,
@@ -34,7 +34,7 @@ function App() {
   }, [pathname]);
 
   return (
-    <DataProvider>
+    <>
       {!pathname.includes("/signin") &&
         !pathname.includes("/signup") &&
         !pathname.includes("/dashboard") && <Navbar />}
@@ -52,6 +52,9 @@ function App() {
 
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<College />} />
+
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
 
         {isLoggedIn && (
           <>
@@ -74,7 +77,7 @@ function App() {
       {!pathname.includes("/signin") &&
         !pathname.includes("/signup") &&
         !pathname.includes("/dashboard") && <Footer />}
-    </DataProvider>
+    </>
   );
 }
 

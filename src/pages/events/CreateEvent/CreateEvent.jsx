@@ -173,7 +173,8 @@ function CreateEvent() {
           >
             <h1 style={{ margin: "0" }}>LOCATION</h1>
             <p style={{ margin: "0" }}>
-              Where is your event taking place? Be sure to set a start and end
+              📍 Where is your event taking place? 🕒 Set your start and end
+              time!
             </p>
           </div>
 
@@ -202,6 +203,67 @@ function CreateEvent() {
                 </option>
               ))}
             </select>
+          </label>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
+          >
+            <h1 style={{ margin: "0" }}>SOCIAL MEDIA LINKS</h1>
+            <p style={{ margin: "0" }}>
+              Create your unforgettable event with ease! 🌟 Fill in the details
+              below to get started on crafting an incredible experience for your
+              attendees.
+            </p>
+          </div>
+
+          <label>
+            <img
+              style={{
+                width: "20px",
+                height: "20px",
+              }}
+              src={images.facebook}
+              alt="linkedin"
+            />
+            Facebook:
+            <input
+              type="text"
+              name="location"
+              value={eventData.location}
+              onChange={handleChange}
+              placeholder="Facebook link..."
+            />
+          </label>
+
+          <label>
+            <img
+              style={{
+                width: "20px",
+                height: "20px",
+              }}
+              src={images.linkedin}
+              alt="linkedin"
+            />
+            Linkedin:
+            <input
+              type="text"
+              name="location"
+              value={eventData.location}
+              onChange={handleChange}
+              placeholder="Linkedin link..."
+            />
           </label>
         </div>
 

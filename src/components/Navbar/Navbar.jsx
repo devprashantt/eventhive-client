@@ -66,20 +66,24 @@ const Navbar = () => {
       </Link>
 
       <div className="navigation__menu">
-        <Link to="colleges" className="menu">
+        <Link to={"/colleges"} className="menu">
           Colleges
         </Link>
-        <Link to="events" className="menu">
+        <Link to={"events"} className="menu">
           Events
         </Link>
-        <Link className="menu">About</Link>
-        <Link className="menu">Contact</Link>
+        <Link to={"/about"} className="menu">
+          About
+        </Link>
+        <Link to={"/contact"} className="menu">
+          Contact
+        </Link>
       </div>
 
       <div className="navigation__right">
         {isLoggedIn ? (
           <>
-            <Link to="/create-event" className="navigation__create">
+            <Link to={"/create-event"} className="navigation__create">
               Create
             </Link>
             <div className="navigation__profile" ref={dropdownRef1}>

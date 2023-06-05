@@ -1,59 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { Dropdown } from "../../components";
 import "./DropdownContainer.scss";
+import { DataContext } from "../../context/DataContext";
 
 const DropdownContainer = () => {
-  const [colleges, setColleges] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [events, setEvents] = useState([]);
+  const { colleges, categories, events } = useContext(DataContext);
 
   const [selectedCollege, setSelectedCollege] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [collegesResponse, categoriesResponse, eventsResponse] =
-          await Promise.all([
-            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/colleges`),
-            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/categories`),
-            axios.get(`${import.meta.env.VITE_BACKEND_HOST}/events`),
-          ]);
-        setColleges(collegesResponse.data);
-        setCategories(categoriesResponse.data);
-        setEvents(eventsResponse.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const statusOptions = [
-    { _id: "1", name: "Pending" },
-    { _id: "2", name: "Approved" },
-    { _id: "3", name: "Rejected" },
-    { _id: "4", name: "Cancelled" },
-    { _id: "5", name: "Completed" },
-  ];
-
-  const handleCollegeChange = async (value) => {
+  const handleCollegeChange = (value) => {
     setSelectedCollege(value);
   };
 
-  const handleCategoryChange = async (value) => {
+  const handleCategoryChange = (value) => {
     setSelectedCategory(value);
   };
 
-  const handleStatusChange = async (value) => {
+  const handleStatusChange = (value) => {
     setSelectedStatus(value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     console.log("Selected College:", selectedCollege);
     console.log("Selected Category:", selectedCategory);
     console.log("Selected Status:", selectedStatus);
@@ -74,7 +46,7 @@ const DropdownContainer = () => {
         onChange={handleCategoryChange}
       />
       <Dropdown
-        options={statusOptions}
+        options={events}
         label="Select Status"
         value={selectedStatus}
         onChange={handleStatusChange}

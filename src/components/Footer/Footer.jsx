@@ -70,7 +70,7 @@ const Footer = () => {
           <button>English</button>
         </div>
         <div className="footer__bottom__copyright">
-          Non Copyrighted © 2023 Upload by Event Hive
+          Copyrighted © 2023 Upload by Event Hive
         </div>
         <div className="footer__bottom__social">
           <img src={images.FacebookLogo} alt="FacebookLogo" />

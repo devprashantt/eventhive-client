@@ -1,18 +1,31 @@
 import { useState, useEffect } from "react";
 import { DataContext, dataInitialState } from "./DataContext";
 import { fetchData } from "../utils";
+import { Spinner } from "../components";
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState(dataInitialState);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
-      const fetchedData = await fetchData();
-      setData(fetchedData);
+      try {
+        const fetchedData = await fetchData();
+        setData(fetchedData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    getData();
-  }, []);
+    if (isLoading) {
+      getData();
+    }
+  }, [isLoading]);
 
-  return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={data}>
+      {isLoading ? <Spinner /> : children}
+    </DataContext.Provider>
+  );
 };
