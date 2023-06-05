@@ -1,0 +1,45 @@
+.contact {
+    padding: 2% 4%;
+    .contact__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .contact__heading {
+            margin: 0;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 64px;
+            line-height: 78px;
+        }
+
+        .contact__content {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: justify;
+        }
+    }
+
+    .contact__info {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+
+        h3 {
+            width: 100%;
+        }
+
+        p,
+        li {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: justify;
+        }
+    }
+}
