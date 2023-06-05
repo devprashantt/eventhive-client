@@ -10,6 +10,7 @@ import image1 from '../assets/events/image1.svg';
 import image2 from '../assets/events/image2.svg';
 
 import star from '../assets/icons/star.svg';
+import hamburger from '../assets/icons/hamburger.svg';
 
 import more_horizontal from '../assets/icons/Fether icons/more-horizontal.svg';
 import search from '../assets/icons/Fether icons/search.svg';
@@ -53,6 +54,7 @@ export default {
     logo,
     image1,
     image2,
+    hamburger,
     star,
     more_horizontal,
     search,
