@@ -16,10 +16,10 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
       text: "Events",
       path: "/dashboard/events",
     },
-    {
-      text: "Scheduler",
-      path: "/dashboard/scheduler",
-    },
+    // {
+    //   text: "Scheduler",
+    //   path: "/dashboard/scheduler",
+    // },
     {
       text: "Task",
       path: "/dashboard/tasks",

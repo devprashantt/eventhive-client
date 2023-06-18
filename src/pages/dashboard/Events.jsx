@@ -83,7 +83,6 @@ const UserEvents = () => {
           alt=""
         />
       </div>
-      <EventContainer />
     </div>
   );
 };

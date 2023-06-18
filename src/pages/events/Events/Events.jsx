@@ -1,26 +1,35 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./Events.scss";
-import { DataContext } from "../../../context/DataContext";
-import { formatDate } from "../../../utils";
 import { EventCard } from "../../../components";
 import { images } from "../../../constants";
 
 const Events = () => {
-  const { events } = useContext(DataContext);
-
-  console.log(events);
-
+  const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const eventsResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/events`
+        );
+        const eventsData = eventsResponse.data;
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    };
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
+    fetchData();
     setFilteredEvents(filtered);
-  }, [search, events]);
+  }, [search]);
 
   const handleSearch = () => {
     const filtered = events.filter((event) =>

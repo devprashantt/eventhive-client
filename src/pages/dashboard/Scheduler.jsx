@@ -1,5 +1,4 @@
 import React from "react";
-import Calendar from "./Calendar/Calendar";
 
 const Scheduler = () => {
   return (
@@ -8,9 +7,7 @@ const Scheduler = () => {
         padding: "1rem",
         borderRadius: "1rem",
       }}
-    >
-      <Calendar />
-    </div>
+    ></div>
   );
 };
 

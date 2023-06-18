@@ -1,15 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 import "./College.scss";
-import { DataContext } from "../../../context/DataContext";
 import EventCard from "../../../components/EventCard/EventCard";
-import { images } from "../../../constants";
 
 const Event = () => {
-  const { colleges } = useContext(DataContext);
-  const { events } = useContext(DataContext);
+  const [colleges, setColleges] = useState([]);
+  const [events, setEvents] = useState([]);
   const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const collegesResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/colleges`
+        );
+        const eventsResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/events`
+        );
+        const collegesData = collegesResponse.data;
+        const eventsData = eventsResponse.data;
+
+        setColleges(collegesData);
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    };
+    fetchData();
+  }, []);
 
   const collegeData = colleges.find((college) => college._id === id);
 

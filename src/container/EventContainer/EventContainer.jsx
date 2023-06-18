@@ -1,24 +1,46 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import SyncLoader from "react-spinners/SyncLoader";
 
 import "./EventContainer.scss";
 import { EventCard, Spinner } from "../../components";
-import { formatDate } from "../../utils";
 import { images } from "../../constants";
-import { DataContext } from "../../context/DataContext";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const EventContainer = () => {
-  const { events } = useContext(DataContext);
-
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const eventsResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/events`
+        );
+        const eventsData = eventsResponse.data;
+        setEvents(eventsData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    };
+    fetchData();
+
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredEvents(filtered);
-  }, [search, events]);
+  }, [search]);
 
   const handleSearch = () => {
     const filtered = events.filter((event) =>
@@ -77,8 +99,15 @@ const EventContainer = () => {
           </div>
         ) : (
           <div className="event__list__empty">
-            <img src={images.dummy} alt="No events found" />
-            <p>Searching events....</p>
+            <img src={images.dummy} alt="Searching events...." />
+            <SyncLoader
+              color={"#7848F4"}
+              loading={loading}
+              css={override}
+              size={10}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
           </div>
         )}
       </div>

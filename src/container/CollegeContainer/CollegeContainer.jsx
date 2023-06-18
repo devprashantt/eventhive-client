@@ -1,25 +1,46 @@
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SyncLoader from "react-spinners/SyncLoader";
 
 import "./CollegeContainer.scss";
 import { images } from "../../constants";
-import { CollegeCard, Spinner } from "../../components";
-import { DataContext } from "../../context/DataContext";
+import { CollegeCard } from "../../components";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const CollegeContainer = () => {
-  const { colleges } = useContext(DataContext);
-
+  const [colleges, setColleges] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-
   const [filteredColleges, setFilteredColleges] = useState(colleges);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const collegesResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/colleges`
+        );
+        const collegesData = collegesResponse.data;
+        setColleges(collegesData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    };
+    fetchData();
+
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredColleges(filtered);
-  }, [search, colleges]);
+  }, [search]);
 
   const handleSearch = () => {
     const filtered = colleges.filter((college) =>
@@ -74,8 +95,15 @@ const CollegeContainer = () => {
             </div>
           ) : (
             <div className="college__container__body__list__empty">
-              <img src={images.dummy} alt="No college found" />
-              <p>Loading colleges...</p>
+              <img src={images.dummy} alt="Loading colleges..." />
+              <SyncLoader
+                color={"#7848F4"}
+                loading={loading}
+                css={override}
+                size={10}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
             </div>
           )}
         </div>

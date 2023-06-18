@@ -1,22 +1,48 @@
-import React, { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../../context/DataContext";
+import React, { useState, useEffect } from "react";
+import SyncLoader from "react-spinners/SyncLoader";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./Colleges.scss";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
 import { CollegeCard } from "../../../components";
 import { images } from "../../../constants";
 
 const Colleges = () => {
-  const { colleges } = useContext(DataContext);
+  const [colleges, setColleges] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
   const [filteredColleges, setFilteredColleges] = useState(colleges);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const collegesResponse = await axios.get(
+          `${import.meta.env.VITE_BACKEND_HOST}/colleges`
+        );
+        const collegesData = collegesResponse.data;
+        setColleges(collegesData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    };
+
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
+
+    fetchData();
     setFilteredColleges(filtered);
-  }, [search, colleges]);
+  }, [search]);
 
   const handleSearch = () => {
     const filtered = colleges.filter((college) =>
@@ -132,18 +158,31 @@ const Colleges = () => {
           )}
         </div>
       </div>
-      <div className="colleges__container">
-        {filteredColleges.map((college) => (
-          <Link key={college._id} to={`/colleges/${college._id}`}>
-            <CollegeCard
-              name={college.name}
-              location={college.location}
-              image={college.imgUrl}
-              description={college.description.substring(0, 100) + "..."}
-            />
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <div className="colleges__loader">
+          <SyncLoader
+            color={"#7848F4"}
+            loading={loading}
+            css={override}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div className="colleges__container">
+          {filteredColleges.map((college) => (
+            <Link key={college._id} to={`/colleges/${college._id}`}>
+              <CollegeCard
+                name={college.name}
+                location={college.location}
+                image={college.imgUrl}
+                description={college.description.substring(0, 100) + "..."}
+              />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

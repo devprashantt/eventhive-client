@@ -58,9 +58,6 @@ const Footer = () => {
           <p>Services</p>
         </Link>
         <Link>
-          <p>Get in touch</p>
-        </Link>
-        <Link>
           <p>FAQs</p>
         </Link>
       </div>

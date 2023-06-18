@@ -1,13 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { Dropdown } from "../../components";
 import "./DropdownContainer.scss";
-import { DataContext } from "../../context/DataContext";
 
 const DropdownContainer = () => {
-  const { colleges, categories, events } = useContext(DataContext);
+  const [colleges, setColleges] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [events, setEvents] = useState([]);
 
   const [selectedCollege, setSelectedCollege] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
