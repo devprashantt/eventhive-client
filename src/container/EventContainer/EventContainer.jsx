@@ -4,14 +4,8 @@ import axios from "axios";
 import SyncLoader from "react-spinners/SyncLoader";
 
 import "./EventContainer.scss";
-import { EventCard, Spinner } from "../../components";
+import { EventCard } from "../../components";
 import { images } from "../../constants";
-
-const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
 
 const EventContainer = () => {
   const [events, setEvents] = useState([]);
@@ -21,26 +15,29 @@ const EventContainer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const eventsResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_HOST}/events`
         );
         const eventsData = eventsResponse.data;
         setEvents(eventsData);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
+  }, []);
 
+  useEffect(() => {
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredEvents(filtered);
-  }, [search]);
+  }, [search, events]);
 
   const handleSearch = () => {
     const filtered = events.filter((event) =>
@@ -77,40 +74,51 @@ const EventContainer = () => {
           )}
         </div>
       </div>
-      <div>
-        {filteredEvents.length > 0 ? (
-          <div className="event__list">
-            {filteredEvents
-              .slice(0, 6)
-              .reverse()
-              .map((event) => (
-                <Link key={event._id} to={`/events/${event._id}`}>
-                  <EventCard
-                    key={event._id}
-                    name={event.name}
-                    date={event.start_date}
-                    time={event.start_time}
-                    location={event.location}
-                    status={event.status}
-                    img={event.banner}
-                  />
-                </Link>
-              ))}
-          </div>
-        ) : (
-          <div className="event__list__empty">
-            <img src={images.dummy} alt="Searching events...." />
-            <SyncLoader
-              color={"#7848F4"}
-              loading={loading}
-              css={override}
-              size={10}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </div>
-        )}
-      </div>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem",
+          }}
+        >
+          <SyncLoader
+            color={"#7848F4"}
+            loading={loading}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div>
+          {filteredEvents.length > 0 ? (
+            <div className="event__list">
+              {filteredEvents
+                .slice(0, 6)
+                .reverse()
+                .map((event) => (
+                  <Link key={event._id} to={`/events/${event._id}`}>
+                    <EventCard
+                      key={event._id}
+                      name={event.name}
+                      date={event.start_date}
+                      time={event.start_time}
+                      location={event.location}
+                      status={event.status}
+                      img={event.banner}
+                    />
+                  </Link>
+                ))}
+            </div>
+          ) : (
+            <div className="event__list__empty">
+              <img src={images.dummy} alt="Searching events...." />
+              <h4>No events found</h4>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

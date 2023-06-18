@@ -286,10 +286,29 @@ function CreateEvent() {
               Add a logo and banner to your event page. These will appear at the
             </p>
           </div>
-          <label for="input_img" className="label__img">
-            Banner:
+          {/* <label for="input_img" className="logo__img">
+            Event Logo:
             <div>Choose Image</div>
-            <img src="" alt="" />
+            <input
+              type="file"
+              name="img"
+              id="input_img"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                  setEventData((prevState) => ({
+                    ...prevState,
+                    img: reader.result,
+                  }));
+                };
+                reader.readAsDataURL(file);
+              }}
+            />
+          </label> */}
+          <label for="input_img" className="banner__img">
+            Event Banner:
+            <div>Choose Image</div>
             <input
               type="file"
               name="img"

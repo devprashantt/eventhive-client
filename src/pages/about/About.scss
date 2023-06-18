@@ -50,3 +50,24 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .about {
+        .about__heading {
+            font-size: 48px;
+            line-height: 58px;
+        }
+
+        .about__content {
+            font-size: 16px;
+            line-height: 20px;
+            text-align: justify;
+        }
+
+        .about__creator {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+    }
+}

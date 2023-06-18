@@ -1,28 +1,31 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import SyncLoader from "react-spinners/SyncLoader";
 
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 
 import "./Event.scss";
 import { images } from "../../../constants";
-import { EventCard, Register, Payment } from "../../../components";
+import { Register } from "../../../components";
 import { EventContainer } from "../../../container";
 import { formatDate } from "../../../utils";
 
 const Event = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [colleges, setColleges] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const collegesResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_HOST}/colleges`
         );
         const eventsResponse = await axios.get(
-          `${import.meta.env.VITE_BACKEND_HOST}/colleges`
+          `${import.meta.env.VITE_BACKEND_HOST}/events`
         );
         const collegesData = collegesResponse.data;
         const eventsData = eventsResponse.data;
@@ -31,6 +34,8 @@ const Event = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -39,8 +44,38 @@ const Event = () => {
   const event = events.find((event) => event._id === id);
   const college = colleges.find((college) => college._id === event.colleges[0]);
 
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "3rem",
+        }}
+      >
+        <SyncLoader
+          color={"#7848F4"}
+          loading={loading}
+          size={10}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
+
   if (!event) {
-    return <div>Event not found</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "3rem",
+        }}
+      >
+        Event not found
+      </div>
+    );
   }
 
   const maxLength = 40;
@@ -104,6 +139,7 @@ const Event = () => {
             flexDirection: "column",
             alignItems: "start",
             justifyContent: "center",
+            minWidth: "50%",
           }}
         >
           <h1>
@@ -311,13 +347,15 @@ const Event = () => {
                 gap: "1rem",
               }}
             >
-              <img
-                src={images.linkedin}
-                alt="linkedin"
-                style={{
-                  cursor: "pointer",
-                }}
-              />
+              <a href={event.social_links[0]}>
+                <img
+                  src={images.linkedin}
+                  alt="linkedin"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+              </a>
               <img
                 src={images.twitter}
                 alt="twitter"

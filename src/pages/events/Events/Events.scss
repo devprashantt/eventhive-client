@@ -1,4 +1,5 @@
 .events {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,5 +47,30 @@
         justify-items: center;
         align-items: center;
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .events {
+        &__landing {
+            div {
+                img {
+                    display: none;
+                }
+            }
+
+            &__content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                gap: 20px;
+
+                &__title {
+                    font-size: 2rem;
+                }
+            }
+        }
     }
 }

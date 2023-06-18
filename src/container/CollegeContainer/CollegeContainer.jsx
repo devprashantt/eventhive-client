@@ -7,52 +7,37 @@ import "./CollegeContainer.scss";
 import { images } from "../../constants";
 import { CollegeCard } from "../../components";
 
-const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
-
 const CollegeContainer = () => {
   const [colleges, setColleges] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const [filteredColleges, setFilteredColleges] = useState(colleges);
+  const [filteredColleges, setFilteredColleges] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const collegesResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_HOST}/colleges`
         );
         const collegesData = collegesResponse.data;
         setColleges(collegesData);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        throw error;
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchData();
+  }, []);
 
+  useEffect(() => {
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredColleges(filtered);
-  }, [search]);
-
-  const handleSearch = () => {
-    const filtered = colleges.filter((college) =>
-      college.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredColleges(filtered);
-  };
-
-  const handleReset = () => {
-    setSearch("");
-    setFilteredColleges(colleges);
-  };
+  }, [search, colleges]);
 
   return (
     <div className="college__container">
@@ -67,18 +52,35 @@ const CollegeContainer = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <div className="input__icon" onClick={handleSearch}>
+          <div className="input__icon" onClick={() => setSearch("")}>
             <img src={images.search} alt="Search" />
           </div>
           {search && (
-            <div className="input__icon" onClick={handleReset}>
+            <div className="input__icon" onClick={() => setSearch("")}>
               <img src={images.reset} alt="Reset" />
             </div>
           )}
         </div>
       </div>
-      <div className="college__container__body">
-        <div>
+
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem",
+          }}
+        >
+          <SyncLoader
+            color={"#7848F4"}
+            loading={loading}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div className="college__container__body">
           {filteredColleges.length > 0 ? (
             <div className="college__container__body__list">
               {filteredColleges.slice(0, 6).map((college) => (
@@ -95,19 +97,12 @@ const CollegeContainer = () => {
             </div>
           ) : (
             <div className="college__container__body__list__empty">
-              <img src={images.dummy} alt="Loading colleges..." />
-              <SyncLoader
-                color={"#7848F4"}
-                loading={loading}
-                css={override}
-                size={10}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
+              <img src={images.dummy} alt="No College Found" />
+              <h4>No colleges found</h4>
             </div>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 };

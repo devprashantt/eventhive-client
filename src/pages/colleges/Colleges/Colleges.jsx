@@ -5,12 +5,6 @@ import axios from "axios";
 
 import "./Colleges.scss";
 
-const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
-
 import { CollegeCard } from "../../../components";
 import { images } from "../../../constants";
 
@@ -22,27 +16,30 @@ const Colleges = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const collegesResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_HOST}/colleges`
         );
         const collegesData = collegesResponse.data;
         setColleges(collegesData);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
+    fetchData();
+  }, []);
 
+  useEffect(() => {
     const filtered = colleges.filter((college) =>
       college.name.toLowerCase().includes(search.toLowerCase())
     );
 
-    fetchData();
     setFilteredColleges(filtered);
-  }, [search]);
+  }, [search, colleges]);
 
   const handleSearch = () => {
     const filtered = colleges.filter((college) =>
@@ -159,11 +156,16 @@ const Colleges = () => {
         </div>
       </div>
       {loading ? (
-        <div className="colleges__loader">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem",
+          }}
+        >
           <SyncLoader
             color={"#7848F4"}
             loading={loading}
-            css={override}
             size={10}
             aria-label="Loading Spinner"
             data-testid="loader"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import SyncLoader from "react-spinners/SyncLoader";
 
 import "./Events.scss";
 import { EventCard } from "../../../components";
@@ -8,11 +9,13 @@ import { images } from "../../../constants";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const eventsResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_HOST}/events`
@@ -22,14 +25,20 @@ const Events = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     const filtered = events.filter((event) =>
       event.name.toLowerCase().includes(search.toLowerCase())
     );
-    fetchData();
+
     setFilteredEvents(filtered);
-  }, [search]);
+  }, [search, events]);
 
   const handleSearch = () => {
     const filtered = events.filter((event) =>
@@ -46,6 +55,7 @@ const Events = () => {
   return (
     <div className="events">
       <div
+        className="events__landing"
         style={{
           width: "100%",
           display: "flex",
@@ -66,6 +76,7 @@ const Events = () => {
           }}
         ></div>
         <div
+          className="events__landing__content"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -76,15 +87,18 @@ const Events = () => {
           }}
         >
           <div
+            className="events__landing__content__desc"
             style={{
               fontSize: "1.2rem",
+              fontStyle: "italic",
             }}
           >
             Thriving Above Event Expectations.
           </div>
           <div
+            className="events__landing__content__title"
             style={{
-              fontSize: "4rem",
+              fontSize: "3rem",
               fontWeight: "bold",
               lineHeight: "1",
             }}
@@ -125,7 +139,7 @@ const Events = () => {
                   fontWeight: "bold",
                 }}
               >
-                2k+
+                {events.length}+
               </span>
               <span>Total Events Hosted</span>
             </div>
@@ -190,19 +204,37 @@ const Events = () => {
           )}
         </div>
       </div>
-      <div className="events__container">
-        {filteredEvents.reverse().map((event) => (
-          <Link key={event._id} to={`/events/${event._id}`}>
-            <EventCard
-              name={event.name}
-              date={event.start_date}
-              time={event.start_time}
-              location={event.location}
-              img={event.banner}
-            />
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem",
+          }}
+        >
+          <SyncLoader
+            color={"#7848F4"}
+            loading={loading}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div className="events__container">
+          {filteredEvents.reverse().map((event) => (
+            <Link key={event._id} to={`/events/${event._id}`}>
+              <EventCard
+                name={event.name}
+                date={event.start_date}
+                time={event.start_time}
+                location={event.location}
+                img={event.banner}
+              />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
