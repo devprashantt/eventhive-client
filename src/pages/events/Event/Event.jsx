@@ -314,14 +314,7 @@ const Event = () => {
               gap: "0.2rem",
             }}
           >
-            {[
-              "Technical",
-              "Jaskaran event",
-              "NIT Goa",
-              "Joy",
-              "Seminar",
-              "NIT Goa",
-            ].map((tag) => (
+            {event.tags.slice(0, 6).map((tag) => (
               <div
                 style={{
                   padding: "0.5rem 1rem",
@@ -347,7 +340,7 @@ const Event = () => {
                 gap: "1rem",
               }}
             >
-              <a href={event.social_links[0]}>
+              <a href={event.social_links[0].linkedin}>
                 <img
                   src={images.linkedin}
                   alt="linkedin"
@@ -370,13 +363,15 @@ const Event = () => {
                   cursor: "pointer",
                 }}
               />
-              <img
-                src={images.facebook}
-                alt="facebook"
-                style={{
-                  cursor: "pointer",
-                }}
-              />
+              <a href={event.social_links[0].facebook}>
+                <img
+                  src={images.facebook}
+                  alt="facebook"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+              </a>
             </div>
           </div>
         </div>
