@@ -14,8 +14,14 @@ function CreateEvent() {
     endTime: "",
     location: "",
     img: "",
+    socialLinks: {
+      facebook: "",
+      linkedin: "",
+    },
     collegeOptions: [],
     selectedCollege: "",
+    tags: [],
+    category: "",
   });
 
   useEffect(() => {
@@ -23,17 +29,20 @@ function CreateEvent() {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_HOST}/colleges`
       );
+
       setEventData((prevState) => ({
         ...prevState,
         collegeOptions: response.data,
       }));
     }
+
     fetchColleges();
   }, []);
 
   async function handleSubmit(event) {
     setActive(true);
     event.preventDefault();
+
     const data = {
       name: eventData.name,
       description: eventData.description,
@@ -42,10 +51,11 @@ function CreateEvent() {
       endTime: eventData.endTime,
       location: eventData.location,
       banner: eventData.img,
+      socialLinks: eventData.socialLinks,
       college: eventData.selectedCollege,
+      tags: eventData.tags,
+      category: eventData.category,
     };
-    console.log("Event created successfully");
-    console.log(data);
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_HOST}/events`, data)
@@ -57,7 +67,27 @@ function CreateEvent() {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setEventData((prevState) => ({ ...prevState, [name]: value }));
+
+    if (name === "tags") {
+      const tagsArray = value.split(",");
+      setEventData((prevState) => ({
+        ...prevState,
+        tags: tagsArray,
+      }));
+    } else if (name === "facebook" || name === "linkedin") {
+      setEventData((prevState) => ({
+        ...prevState,
+        socialLinks: {
+          ...prevState.socialLinks,
+          [name]: value,
+        },
+      }));
+    } else {
+      setEventData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   }
 
   return (
@@ -103,6 +133,36 @@ function CreateEvent() {
               placeholder="Write description about your event..."
             />
           </label>
+
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              gap: "2rem",
+            }}
+          >
+            <label>
+              Tags:
+              <input
+                type="text"
+                name="tags"
+                value={eventData.tags}
+                onChange={handleChange}
+                placeholder="Add tags separated by commas..."
+              />
+            </label>
+
+            <label>
+              Category:
+              <input
+                type="text"
+                name="category"
+                value={eventData.category}
+                onChange={handleChange}
+                placeholder="Add category..."
+              />
+            </label>
+          </div>
         </div>
 
         <div
@@ -235,13 +295,13 @@ function CreateEvent() {
                 height: "20px",
               }}
               src={images.facebook}
-              alt="linkedin"
+              alt="facebook"
             />
             Facebook:
             <input
               type="text"
-              name="location"
-              value={eventData.location}
+              name="facebook"
+              value={eventData.socialLinks.facebook}
               onChange={handleChange}
               placeholder="Facebook link..."
             />
@@ -259,8 +319,8 @@ function CreateEvent() {
             Linkedin:
             <input
               type="text"
-              name="location"
-              value={eventData.location}
+              name="linkedin"
+              value={eventData.socialLinks.linkedin}
               onChange={handleChange}
               placeholder="Linkedin link..."
             />
@@ -286,26 +346,6 @@ function CreateEvent() {
               Add a logo and banner to your event page. These will appear at the
             </p>
           </div>
-          {/* <label for="input_img" className="logo__img">
-            Event Logo:
-            <div>Choose Image</div>
-            <input
-              type="file"
-              name="img"
-              id="input_img"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                  setEventData((prevState) => ({
-                    ...prevState,
-                    img: reader.result,
-                  }));
-                };
-                reader.readAsDataURL(file);
-              }}
-            />
-          </label> */}
           <label for="input_img" className="banner__img">
             Event Banner:
             <div>Choose Image</div>
