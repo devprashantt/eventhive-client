@@ -22,7 +22,14 @@ const Register = ({ date, time, eventId }) => {
   return (
     <div className="ticket">
       <div className="ticket__heading">
-        <h1>Date & Time</h1>
+        <h1
+          style={{
+            padding: "0",
+            margin: "0",
+          }}
+        >
+          Date & Time
+        </h1>
       </div>
       <div className="ticket__time">
         <h2>
