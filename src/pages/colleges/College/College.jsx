@@ -53,7 +53,7 @@ const Event = () => {
     >
       <div className="college__image">
         <img src={collegeData.imgUrl} alt={collegeData.name} />
-        <Link to="/colleges">
+        <Link to="/">
           <div className="college__image__button">
             <p>Back</p>
           </div>
@@ -73,9 +73,17 @@ const Event = () => {
             }}
           />
         </div>
-        <div className="college__content__title">{collegeData.name}</div>
-        <div className="college__content__description">
-          <p>{collegeData.description}</p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          <div className="college__content__title">{collegeData.name}</div>
+          <div className="college__content__description">
+            <p>{collegeData.description}</p>
+          </div>
         </div>
       </div>
 

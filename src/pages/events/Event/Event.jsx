@@ -140,6 +140,7 @@ const Event = () => {
             alignItems: "start",
             justifyContent: "center",
             minWidth: "50%",
+            gap: "2rem",
           }}
         >
           <h1>
@@ -149,7 +150,6 @@ const Event = () => {
             style={{
               fontSize: "1.2rem",
               fontWeight: "400",
-              lineHeight: "1.5",
               color: "gray",
             }}
           >
@@ -167,10 +167,10 @@ const Event = () => {
           </p>
           <div
             style={{
-              marginTop: "2rem",
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
+              gap: "1rem",
             }}
           >
             <h1>Event Timing</h1>
@@ -211,7 +211,13 @@ const Event = () => {
               </p>
             </div>
           </div>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.5rem",
+            }}
+          >
             <h1>Organizer Contacts</h1>
             <a
               style={{
@@ -283,6 +289,7 @@ const Event = () => {
             flexDirection: "column",
             alignItems: "start",
             justifyContent: "center",
+            gap: "1.5rem",
           }}
         >
           <h1>
@@ -330,7 +337,15 @@ const Event = () => {
               </div>
             ))}
           </div>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              justifyContent: "center",
+              gap: "1.5rem",
+            }}
+          >
             <h1>
               <span>Share with friend</span>
             </h1>

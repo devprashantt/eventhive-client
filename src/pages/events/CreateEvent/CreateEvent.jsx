@@ -346,7 +346,7 @@ function CreateEvent() {
               Add a logo and banner to your event page. These will appear at the
             </p>
           </div>
-          <label for="input_img" className="banner__img">
+          <label htmlFor="input_img" className="banner__img">
             Event Banner:
             <div>Choose Image</div>
             <input
@@ -366,6 +366,19 @@ function CreateEvent() {
               }}
             />
           </label>
+
+          {eventData.img && (
+            <img
+              src={eventData.img}
+              alt="Event Banner"
+              style={{
+                maxWidth: "100%",
+                height: "25rem",
+                objectFit: "cover",
+                borderRadius: "0.5rem",
+              }}
+            />
+          )}
         </div>
 
         <button type="submit">{active ? "Creating..." : "Create Event"}</button>

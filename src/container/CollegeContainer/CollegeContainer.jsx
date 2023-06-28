@@ -90,7 +90,7 @@ const CollegeContainer = () => {
                     name={college.name}
                     image={college.imgUrl}
                     location={college.location}
-                    description={college.description.substring(0, 100) + "..."}
+                    description={college.description.substring(0, 90) + "..."}
                   />
                 </Link>
               ))}

@@ -30,10 +30,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 40px;
 
             h1 {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 700;
                 font-size: 40px;
@@ -47,7 +46,6 @@
             }
 
             p {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -61,7 +59,6 @@
 
             button {
                 padding: 15px 40px;
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -98,8 +95,8 @@
             justify-content: center;
             align-items: center;
             padding: 0% 10%;
+            gap: 1rem;
             .logo {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 700;
                 font-size: 24px;
@@ -114,7 +111,6 @@
                 }
             }
             h1 {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 700;
                 font-size: 28px;
@@ -128,7 +124,6 @@
             }
 
             .error {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -157,7 +152,6 @@
                     gap: 10px;
                     background: #7848f4;
                     border-radius: 5px;
-                    font-family: "DM Sans";
                     font-style: normal;
                     font-weight: 400;
                     font-size: 16px;
@@ -172,7 +166,6 @@
             }
 
             p {
-                font-family: "DM Sans";
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -189,7 +182,7 @@
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                padding: 0px 40px;
+                padding: 15px 40px;
                 gap: 10px;
                 background: #ffffff;
                 border-radius: 5px;
@@ -203,7 +196,6 @@
                 }
 
                 p {
-                    font-family: "DM Sans";
                     font-style: normal;
                     font-weight: 400;
                     font-size: 16px;

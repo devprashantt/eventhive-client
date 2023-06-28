@@ -1,7 +1,8 @@
 .react-calendar {
     border: unset;
     background-color: transparent;
-    font-family: "DM Sans", sans-serif;
+    ,
+    sans-serif;
 }
 
 .react-calendar__navigation__prev2-button {

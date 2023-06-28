@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: 30rem;
-    padding: 1rem;
+    min-height: 28rem;
+    gap: 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 10px;
     background: #ffffff;
@@ -31,6 +32,7 @@
         justify-content: space-between;
         align-items: flex-start;
         width: 100%;
+        gap: 0.5rem;
         padding: 0 1rem;
 
         .event__description {
