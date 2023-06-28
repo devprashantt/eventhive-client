@@ -1,9 +1,7 @@
 .college__card {
     display: flex;
-
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     min-height: 30rem;
     padding: 1rem;
     border: 1px solid #ccc;
@@ -11,6 +9,7 @@
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     transition: all 0.3s ease-in-out;
+
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.26);
